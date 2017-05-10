@@ -1,0 +1,165 @@
+\documentclass[a4paper,twoside,12pt]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage[a4paper, left=37mm, right=27mm, top=39mm, bottom=39mm, headsep=12mm, footskip=15mm]{geometry}
+\setlength{\headheight}{15pt}
+\usepackage{fancyhdr}
+\usepackage{fontenc}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage{hyperref}
+\usepackage{afterpage}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{tabu}
+\usepackage{listings}
+\usepackage{subcaption}
+\usepackage{emptypage}
+\usepackage{bookmark}
+\usepackage{xfrac}
+\usepackage{epsfig}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{} \fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{
+	\fancyhead{}
+	\renewcommand{\headrulewidth}{0pt}}
+
+%%%%%%%%%% General thesis informations go here! (TITLE, AUTHOR-NAME, KEYWORD-1, KEYWORD-2,...
+\hypersetup{
+    pdfauthor  = {AUTHOR-NAME},    		    % author
+    pdftitle   = {TITLE},    				% title
+ 	pdfsubject = {Master's Degree Thesis},  % subject of the document
+ 	pdfkeywords= {KEYWORD-1, KEYWORD-2}      % list of keywords
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGIN OF THE DOCUMENT
+\begin{document}
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+\fancyhf{} \fancyhead[LE,RO]{\bfseries\thepage}
+\fancyhead[LO]{\bfseries\rightmark}
+\fancyhead[RE]{\bfseries\leftmark}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{
+	\fancyhead{}
+	\renewcommand{\headrulewidth}{0pt}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title page	
+\newgeometry{margin=3cm}
+\input{title-page/title-page.tex}
+\restoregeometry
+
+\cleardoublepage{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Dedication
+\begin{flushright}
+\emph{\input{initial-final-stuff/dedication.tex}}
+\cleardoublepage{}
+\par
+\end{flushright}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Acnowledgment
+\chapter*{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgments}
+\input{initial-final-stuff/acknowledgments.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Abstract
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\input{initial-final-stuff/abstract.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Sommario
+\chapter*{Sommario}
+\addcontentsline{toc}{chapter}{Sommario}
+\input{initial-final-stuff/sommario.tex}
+\tableofcontents 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% List of figures
+\listoffigures
+\addcontentsline{toc}{chapter}{List of figures}
+\cleardoublepage{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% List of tables
+\listoftables
+\addcontentsline{toc}{chapter}{List of tables}
+\cleardoublepage{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Introduction
+\chapter*{Introduction\label{chap:introduction}}
+\addcontentsline{toc}{chapter}{Introduction}
+\markboth{Introduction}{Introduction}
+\input{initial-final-stuff/introduction.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chapter 1
+\chapter{First chapter\label{chap:first-chapter}}
+\input{chapters/chapter-1/chapter-1.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chapter 2
+\chapter{Second chapter\label{chap:second-chapter}}
+\input{chapters/chapter-2/chapter-2.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chapter 3
+\chapter{Third chapter\label{chap:third-chapter}}
+\input{chapters/chapter-3/chapter-3.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chapter 4
+\chapter{Fourth chapter\label{chap:fourth-chapter}}
+\input{chapters/chapter-4/chapter-4.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chapter 5
+\chapter{Fifth chapter\label{chap:fifth-chapter}}
+\input{chapters/chapter-5/chapter-5.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chapter 6
+\chapter{Sixth chapter\label{chap:sixth-chapter}}
+\input{chapters/chapter-6/chapter-6.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chapter 7
+\chapter{Seventh chapter\label{chap:seventh-chapter}}
+\input{chapters/chapter-7/chapter-7.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chapter 8
+\chapter{Eighth chapter\label{chap:eighth-chapter}}
+\input{chapters/chapter-8/chapter-8.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Chapter 9
+\chapter{Ninth chapter\label{chap:ninth-chapter}}
+\input{chapters/chapter-9/chapter-9.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Conclusion
+\chapter*{Conclusions}
+\addcontentsline{toc}{chapter}{Conclusions}
+\markboth{Conclusions}{Conclusions}
+\input{initial-final-stuff/conclusions.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography
+\bibliographystyle{plain}
+\bibliography{bibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Appendix A
+\appendix
+\chapter{First appendix\label{app:first-appendix}}
+\input{appendices/appendix-a/appendix-a.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Appendix B
+\chapter{Second appendix\label{app:second-appendix}}
+\input{appendices/appendix-b/appendix-b.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Appendix  C
+\chapter{Third appendix\label{app:third-appendix}}
+\input{appendices/appendix-c/appendix-c.tex}
+\cleardoublepage{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END OF THE DOCUMENT
+\end{document}
