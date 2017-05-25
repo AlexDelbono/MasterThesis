@@ -1,0 +1,51 @@
+\section{Parametrized trajectory\label{sec:parametrized_trajectory}}
+The trajectory is a spatial path with associated a timing law and it is used
+to identify position and orientation of the center of mass of our agent in the space.
+We can start with the following definition of a generic trajectory $ p_{d,i}(t_d) $
+for $ N $ vehicles:
+
+\begin{equation}  \label{eq:traj_def}
+  p_{d,i}:[0,t^f_{d,i}] \rightarrow \mathbb{R}^3, \quad i = 1,2,\dots,N
+\end{equation}
+where $ t_d \in [0, T_d] $, with $T_d := max \{ t^f_{d,1}, \dots , t^f_{d,N} \} $,
+is the time variable of the trajectory, while $ t^f_{d,i} \in \mathbb{R}^+ $
+are the individual final mission times of the vehicles obtaining during the planning
+phase. Usually all this final times are equal and therefore
+$ t^f_{d,1} = \dots = t^f_{d,N} = T_d$, but we introduced the notation
+for the sake of completeness.
+Obviously the trajectories need to be collision free and must satisfy spatial
+and temporal constraints due to the dimension of the vehicle and its maximum
+velocities and accelerations.
+
+We now parametrize the trajectory using a dimensionless variable $ \zeta_i \in [0,1]$,
+related to the time $t_d$. In this way we can specify a function $ \theta( \cdot )$,
+which represents the timing law associated with the spatial path $p_{d,i}(\zeta_i)$.
+We can specify this timing law using the dynamic relation of the form:
+
+\begin{equation}  \label{eq:tim_law_def}
+  \theta( t_d ) = \frac{d \zeta_i}{dt_d}
+\end{equation}
+
+where $ \theta( t_d ) $ is a smooth and positive (the parameter increases when
+the time increases) function.
+
+It is desirable that an analytical expression for the function $ \zeta_i (t_d) $
+to be available, since it allows a one-to-one correspondence between the time
+variable $t_d$ and the parameter $ \zeta_i $.
+Using the timing law, defined in \eqref{eq:tim_law_def}, the map $ \zeta_i ( t_d) $
+is given by the integral:
+
+\begin{equation}  \label{eq:zeta_law_def}
+  \zeta( t_d ) = \int^{t_d}_0 \theta_i(\tau) d \tau
+\end{equation}
+
+Usually, all this functions are defined as polynomials in order to make quicker and
+easier the evaluation process, since multiplication and addition are the basic
+operations in a digital processor, but it is not mandatory to use them and a
+generic shape for the functions can be designed.
+We have defined all the elements of a trajectory and we do not enter in details
+about the trajectory generation phase.
+Further details about boundary conditions and flyable trajectory which satisfy
+the dynamic constraints of the vehicles can be found in \cite{cichellaMain} and
+are extensively presented in \cite{trajGeneration1}, \cite{trajGeneration2},
+\cite{trajGeneration3}.

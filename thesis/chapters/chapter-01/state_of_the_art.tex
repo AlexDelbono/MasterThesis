@@ -1,0 +1,55 @@
+%%Introduction of the chapter
+The literature about the "Consensus" is grown significantly in the latest years
+because of the increasing presence of autonomous vehicles. This, in accordance with
+the new improvements in robotics, has brought a growing interest in consensus
+between multiple agents which have to accomplish a mission in cooperative or adversarial
+scenarios.
+
+The "Consensus" theory takes its roots in Graph Theory and Automatics and it can
+be used to coordinate a mission in order to achieve the synchronization between
+the vehicles even when there might be some unforeseens which force one or more
+components of the mission to change the planned trajectory or task. In this case,
+the other components identify this variation and they will act for preserving the
+synchronization.
+
+The "Consensus" algorithm is a distributed algorithm which sometimes can be simulated
+in a centralized fashion because of the reduced computational power of the machines
+involved in the mission, which are equipped with low power hardware to account for
+the crucial issue of power consumption.
+In this scenario, a centralized server simulates the algorithm and communicates with
+all the machines.
+
+The most common "Consensus" application is a spatial and timing consensus.
+Each vehicle of the formation has to travel along a specified trajectory and the
+completion of the mission occurs when all the agents reach the final positions of their
+spatial paths. The algorithm has to guarantee the difference between
+the ending time at which all the vehicles finish their tasks is minimized and
+asymptotically goes to zero when the execution time goes to infinity and no other
+unforeseen happens.
+We also consider formations of Unmanned Aerial Vehicles but the key concepts can
+be freely applied to other categories of robots when they are able to follow a trajectory.
+This study is focused on this kind of application and further
+simulation result and experimental achievements are presented in the chapters
+\ref{chap:simulation_results} and \ref{chap:experimental_results}.
+
+In the following we refer to the main work of Venanzio Cichella in this field \cite{cichellaMain}
+in order to provide an homogeneous state of the art about the "Consensus".
+The paper considers all the details needed to build a "Consensus" system.
+We can identify the main components of this kind of systems:
+\begin{itemize}
+  \item Parametrized trajectory
+  \item Virtual time
+  \item Consensus law
+  \item Network topology
+\end{itemize}
+
+
+
+%% Sections of the chapter
+\input{chapters/chapter-01/parametrized_trajectory.tex}
+
+\input{chapters/chapter-01/virtual_time.tex}
+
+\input{chapters/chapter-01/consensus_law.tex}
+
+\input{chapters/chapter-01/network_topology.tex}
