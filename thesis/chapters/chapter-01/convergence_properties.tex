@@ -1,0 +1,16 @@
+\section{Convergence properties\label{sec:convergence_properties}}
+
+The control law given by \eqref{eq:cons_law} guarantees that the error of the
+"Consensus" algorithm converges to zero exponentially.
+It can be shown that the maximum convergence rate is given by the sum of
+the convergence rate of the path following error and the term
+
+\begin{equation}
+  \frac{a}{b} \frac{N \mu}{T ( 1 + (a / b) N T)^2}
+\end{equation}
+
+which depends on the control gains $a$ and $b$, the number of vehicles $N$ and
+the quality of service of the communication network, characterized by the parameters
+$T$ and $\mu$.
+If we fix the gains and the number of the vehicles, the convergence rate depends
+only on the amount of information which the agents exchange each other over time.

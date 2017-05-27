@@ -1,1 +1,50 @@
 \section{Virtual time\label{sec:virtual_time}}
+
+Given $ N $ collision free trajectories, we want each vehicle follows a \textit{virtual target},
+moving along the path computed offline by the trajectory generation algorithm.
+The objective can be achieved introducing a \textit{virtual time}, $ \gamma_i $,
+which is used to evaluate the trajectory and can be adjusted online to reach
+the synchronization even when external disturbances occur.
+Thus, the position of the $ i^{th} $ virtual target is denoted by $ p_{d,i} ( \gamma_i (t))$
+and the $ i^{th} $ vehicle tries to follow it, by reducing to zero a suitably defined
+error vector using control inputs.
+
+Considering the trajectory $ p_{d,i} (t_d) $ produced by the trajectory generation
+algorithm, we consider the virtual time $ \gamma_i $ as a function of time $ t $,
+which relates the actual time $t$ to mission planning time $t_d$.
+
+\begin{equation}  \label{eq:virt_time_func}
+  \gamma_i : \mathbb{R}^3 \rightarrow [0, T_d], \qquad for \; all \quad i = 1,2,\dots,N
+\end{equation}
+
+We can now define the virtual target's position, velocity and acceleration, which
+have to be followed by the $ i^{th}$ vehicle at time $t$
+
+\begin{equation}  \label{eq:pos_vel_acc_def}
+  \begin{aligned}
+  p_{c,i}(t) = \ & p_{d,i}(\gamma_i(t)) \\
+  v_{c,i}(t) = \ & \dot{p}_{d,i} (\gamma_i(t), \dot{\gamma}_i (t)) \\
+  a_{c,i}(t) = \ & \ddot{p}_{d,i} (\gamma_i(t), \dot{\gamma}_i(t), \ddot{\gamma}_i(t))
+  \end{aligned}
+\end{equation}
+
+With the above formulation. if $ \dot{\gamma} = 1$, then the speed profile of
+the virtual target is equal to the desired speed profile computed at trajectory
+generation level.
+Indeed, if $ \dot{\gamma} = 1$, for all $t \in [0, T_d]$, with $\gamma_i(0) = 0$,
+implies that $\gamma_i(t) = t_d$ for all $t$ and thus:
+
+\begin{equation*}
+  p_{c,i}(t) = p_{d,i}(\gamma_i(t)) = p_{d,i}(t) = p_{d,i} (t_d)
+\end{equation*}
+
+In this particular case, the desired and commanded trajectories coincides
+in every time instant and also the velocity profile coincides with the one
+chosen at trajectory generation time.
+If instead $\dot{\gamma_i} > 1$, it implies a faster execution of the mission;
+on the other hand, $\dot{\gamma_i} < 1$ implies a slower one.
+
+The second order derivative of $\gamma_i$, $\ddot{\gamma}_i$, is a free parameter
+used to achieve the consensus. In the next section we will introduce the control law
+which commands its evolution during time and we will explain how it is possible to
+implement a distributed algorithm.
