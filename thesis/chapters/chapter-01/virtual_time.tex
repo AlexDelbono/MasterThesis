@@ -1,6 +1,6 @@
 \section{Virtual time\label{sec:virtual_time}}
 
-Given $ N $ collision free trajectories, we want each vehicle follows a \textit{virtual target},
+Given $ N $ collision free trajectories, we want each vehicle to follow a \textit{virtual target},
 moving along the path computed offline by the trajectory generation algorithm.
 The objective can be achieved introducing a \textit{virtual time}, $ \gamma_i $,
 which is used to evaluate the trajectory and can be adjusted online to reach
@@ -14,7 +14,7 @@ algorithm, we consider the virtual time $ \gamma_i $ as a function of time $ t $
 which relates the actual time $t$ to mission planning time $t_d$.
 
 \begin{equation}  \label{eq:virt_time_func}
-  \gamma_i : \mathbb{R}^3 \rightarrow [0, T_d], \qquad for \; all \quad i = 1,2,\dots,N
+  \gamma_i : \mathbb{R}^+ \rightarrow [0, T_d], \qquad for \; all \quad i = 1,2,\dots,N
 \end{equation}
 
 We can now define the virtual target's position, velocity and acceleration, which
@@ -28,21 +28,28 @@ have to be followed by the $ i^{th}$ vehicle at time $t$
   \end{aligned}
 \end{equation}
 
-With the above formulation. if $ \dot{\gamma} = 1$, then the speed profile of
+With the above formulation, if $ \dot{\gamma} = 1$, then the speed profile of
 the virtual target is equal to the desired speed profile computed at trajectory
 generation level.
 Indeed, if $ \dot{\gamma} = 1$, for all $t \in [0, T_d]$, with $\gamma_i(0) = 0$,
-implies that $\gamma_i(t) = t_d$ for all $t$ and thus:
+it implies that $\gamma_i(t) = t_d$ for all $t$ and thus:
 
 \begin{equation*}
   p_{c,i}(t) = p_{d,i}(\gamma_i(t)) = p_{d,i}(t) = p_{d,i} (t_d)
 \end{equation*}
 
-In this particular case, the desired and commanded trajectories coincides
-in every time instant and also the velocity profile coincides with the one
-chosen at trajectory generation time.
+In this particular case, the desired and commanded trajectories coincide
+in every time instant and also the velocity profiles coincide with the ones
+chosen at the trajectory generation time.
 If instead $\dot{\gamma_i} > 1$, it implies a faster execution of the mission;
 on the other hand, $\dot{\gamma_i} < 1$ implies a slower one.
+
+We can now normalize $\gamma_i$ in order to have a range which is $[0,1]$. We simply
+need to divide all by $T_d$. In this way, we could use Bezier curves in order to
+represent the spatial path. This kind of curves offer interesting properties for
+computing minimum distances between two of them and allow the computation of
+smooth trajectories. In any case, it is not mandatory to use them and a general
+function could be used instead.
 
 The second order derivative of $\gamma_i$, $\ddot{\gamma}_i$, is a free parameter
 used to achieve the consensus. In the next section we will introduce the control law
