@@ -1,0 +1,23 @@
+# Command for enabling or disabling
+# trajectory and consensus tasks
+
+#####################
+## Request fields
+bool cmd
+---
+#########################
+### exit code constants
+# everything ok
+uint8 SUCCESS = 0
+# trajectory following already
+# active and consensus activated
+uint8 ESCALATION = 1
+# nothing to do
+uint8 ALREADY_DONE = 2
+# other errors
+uint8 FAILURE = 3
+
+######################
+# Response fields
+bool success
+uint8 exit_code
