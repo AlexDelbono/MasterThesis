@@ -1,0 +1,71 @@
+\section{Software}
+
+We now list all the software adopted in order to execute the algorithm
+in a real environment and in the simulated one.
+
+The principal software used to manage the distributed architecture is ROS Kinetic
+Kame \cite{ros}.
+ROS is a robotic middleware which can manage in a distributed environment more
+machines with a structure which is mainly publisher-subscriber.
+The central part of the ROS architecture is a node called ROS core, which manages
+the topics of the system and the subscriptions.
+The ROS core offers also other functionalities such as the Parameter Server or the
+possibility to advertise services.
+The Parameter Server is a central infrastructure which is responsible for storing
+configuration parameters loaded by the nodes of the system.
+These parameters can be retrieved by the nodes and used whether needed.
+Instead, a ROS service is a sort of remote function call. One node can advertise
+the service, which can be called by any other nodes. The call is synchronous and
+so the caller is blocked until the callee has executed its callback function.
+ROS architecture is based on queues and threads and most of the provided functions
+hide part of the implementations of these tools.
+
+
+\subsection{Ground station}
+The ground station runs Windows 10 Pro \cite{windows} and the software used to virtualize a
+Desktop machine is VMware \cite{vmware}.
+On the virtual machine is installed Ubuntu 16.04 LTS \cite{ubuntu} in order to run software
+needed and available only for Unix systems.
+
+On Windows operative system we launch the Motive Optitrack software \cite{optitrack},
+which allows to calibrate and control the cameras. It also provides the streaming of
+the positions of the markers identified by the cameras and sends it to the Ubuntu
+operative system.
+Here, the information is converted by a ROS node and sent through the ROS topics,
+which are read by the drones. In this way, each drone knows exactly its position.
+This node is an open source node called Mocap which can be found on GitHub \cite{mocap}.
+On Ubuntu side, we launch the ROS core, which manages all the ROS nodes and topics.
+
+\subsection{Raspberry Pi Zero}
+The Raspberry Pi Zero executes a dedicated version of Debian operative system,
+which is Raspbian. The version used is Raspbian Jessie 4.4 \cite{raspbian}.
+
+\subsection{Intel Edison}
+The Intel Edison runs a version of Debian called Jubilinux version 0.1.1 \cite{jubilinux}.
+
+\subsection{Both companions}
+Both companions, the Raspberry and the Edison, are provided with ROS Kinetic and
+both have to execute some ROS nodes in order to communicate with the others.
+
+First of all, they run Mavros nodes \cite{mavros}.
+This kind of node can be downloaded from GitHub and manages the conversion of the
+information taken from the ROS topics to the serial port and vice versa. Indeed,
+the ROS messages are converted into Mavlink messages and sent through the serial
+to the Pixfalcon autopilot. The same is done for the Mavlink messages from the
+autopilot, which are published on ROS topics.
+
+The second kind of ROS node run by the companions, is a custom consensus node, which
+loads the desired trajectory and sends the next set point to the Mavros node.
+This node will be analyzed in details in the chapter \ref{chap:consensus_node}.
+
+\subsection{Pixfalcon}
+The Pixfalcon autopilot is flashed with an open source firmware,
+the PX4 Pro Autopilot \cite{px4}, which is downloadable from GitHub.
+The release used is the v1.5.5.
+
+\subsection{Additional software}
+We use Matlab R2016\_B \cite{matlab} to the data process and to graph plot. We also use it to validate
+some theoretical results.
+
+This document is written in  \LaTeX \ \cite{latex} and the code IDE used is Atom \cite{atom},
+while the versioning control platform used are GitHub \cite{github} and GitLab \cite{gitlab}.
