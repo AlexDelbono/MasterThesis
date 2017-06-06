@@ -26,8 +26,7 @@ The microcomputer communicates with the ground station using the Wifi.
 
 \subsection{Pixfalcon}
 The flight control unit adopted it the Pixfalcon (figure \ref{fig:hardware_pixfalcon})
-%%TODO\cite{Pixhawk}
-which is from the family of -TODO-.%%TODO cite pxhawk
+which belongs to the family of the Pixhawk \cite{pixhawk}.
 
 \begin{figure}[h]
 \centering
@@ -68,7 +67,7 @@ Its specifications are the following:
 
 \subsection{Intel Edison}
 The companion computers are of two types.
-The first kind is the Intel Edison (figure \ref{fig:hardware_edison})%%TODO references
+The first kind is the Intel Edison \cite{edison} (figure \ref{fig:hardware_edison})
 which is a general purpose computer.
 
 \begin{figure}[h]
@@ -87,8 +86,8 @@ The specifications are the following:
 \end{itemize}
 
 \subsection{RaspberryPi Zero}
-The second kind of companion is the RaspberryPi Zero (figure \ref{fig:hardware_raspberry})
-%%TODO references
+The second kind of companion is the RaspberryPi Zero \cite{raspberry}
+(figure \ref{fig:hardware_raspberry}).
 
 \begin{figure}[h]
 \centering
@@ -115,12 +114,57 @@ The specifications are the following:
 \end{itemize}
 
 \subsection{Motive Optitrack}
-The motion capture system is Motive Optitrack. %%TODO reference
-We use eight Optitrack Prime 13 cameras %%TODO reference
-arranged on a square as show in the figure. %TODO reference
+The motion capture system is Motive Optitrack \cite{optitrack}.
+We use eight Optitrack Prime 13 cameras \cite{prime13},
+arranged on a square as show in the figure \ref{fig:camera_square}.
 
-The cameras are connected to a Netgear Prosafe 28PT GE POE switch using %TODO reference
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{chapters/chapter-03/figures/cameras_square.png}
+\caption{Motive Optitrack screenshot}
+\label{fig:camera_square}
+\end{figure}
+
+The cameras are connected to a Netgear Prosafe 28PT GE POE \cite{netgear} switch using
 Gigabit Ethernet cables.
 
 In order to be visible by the Optitrack system, every drone must be equipped with
-markers which make possible the recognition. %TODO photo markers
+markers (figure \ref{fig:marker}), with different configurations,
+which make possible the diversification of all the drones. %TODO photo markers
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{chapters/chapter-03/figures/marker.jpg}
+\caption{Optitrack marker}
+\label{fig:marker}
+\end{figure}
+
+The two models of drone which we will use are presented in the figures \ref{fig:ant1}
+and \ref{fig:hexa}. The first one is the Ant model, which is equipped with the Raspberry
+Pi Zero and the Pixfalcon. It is a tiny drones which weights about 200g.
+The second one is the Hexa model. It is provided with the Intel Edison board and
+the Pixfalcon. It is larger and its diameters is about 40cm long.
+As we can see from the figures, the Ant model has four propellers, while the Hexa
+is provided with six ones.
+
+\begin{figure}[!htb]
+\minipage{0.5\textwidth}
+  \includegraphics[width=\linewidth]{chapters/chapter-03/figures/ant1_1.jpg}
+\endminipage\hfill
+\minipage{0.5\textwidth}
+  \includegraphics[width=\linewidth]{chapters/chapter-03/figures/ant1_2.jpg}
+\endminipage
+\caption{Ant drone}
+\label{fig:ant1}
+\end{figure}
+
+\begin{figure}[!htb]
+\minipage{0.5\textwidth}
+  \includegraphics[width=\linewidth]{chapters/chapter-03/figures/hexa_1.jpg}
+\endminipage\hfill
+\minipage{0.5\textwidth}
+  \includegraphics[width=\linewidth]{chapters/chapter-03/figures/hexa_2.jpg}
+\endminipage
+\caption{Hexa drone}
+\label{fig:hexa}
+\end{figure}
