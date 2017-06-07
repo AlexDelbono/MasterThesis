@@ -19,13 +19,13 @@ On this machine, we run a virtual machine which has the following specifics:
   \item Network: Virtual adapter
 \end{itemize}
 
-The flying machines involved in the mission are of two kinds, but both adopt the
+The flying vehicles involved in the mission are of two kinds, but both adopt the
 same general configuration, even with different hardware. Indeed, they are equipped
-with a flight control unit connected with a companion microcomputer by the serial port
+with a flight control unit connected with a companion microcomputer by the serial port.
 The microcomputer communicates with the ground station using the Wifi.
 
 \subsection{Pixfalcon}
-The flight control unit adopted it the Pixfalcon (figure \ref{fig:hardware_pixfalcon})
+The flight control unit adopted is the Pixfalcon (figure \ref{fig:hardware_pixfalcon})
 which belongs to the family of the Pixhawk \cite{pixhawk}.
 
 \begin{figure}[h]
@@ -96,7 +96,7 @@ The second kind of companion is the RaspberryPi Zero \cite{raspberry}
 \label{fig:hardware_raspberry}
 \end{figure}
 
-The specifications are the following:
+Its specifications are the following:
 
 \begin{itemize}
   \item Processor:
@@ -106,17 +106,18 @@ The specifications are the following:
         \end{itemize}
 
   \item Memory: 512MB LPDDR2 SDRAM
-
   \item USB On-The-Go port
   \item Mini HDMI
   \item 40pin GPIO header
-  \item CSI camera connector (newer version from May 2016)
+  \item CSI camera connector
 \end{itemize}
 
 \subsection{Motive Optitrack}
 The motion capture system is Motive Optitrack \cite{optitrack}.
 We use eight Optitrack Prime 13 cameras \cite{prime13},
-arranged on a square as show in the figure \ref{fig:camera_square}.
+arranged on a square as show in the figure \ref{fig:camera_square}. 
+The defined volume is a cube of 5 meters per side,
+and the drones can fly without obstacles inside it.
 
 \begin{figure}[h]
 \centering
@@ -129,8 +130,8 @@ The cameras are connected to a Netgear Prosafe 28PT GE POE \cite{netgear} switch
 Gigabit Ethernet cables.
 
 In order to be visible by the Optitrack system, every drone must be equipped with
-markers (figure \ref{fig:marker}), with different configurations,
-which make possible the diversification of all the drones. %TODO photo markers
+markers (figure \ref{fig:marker}) with different configurations,
+which make possible the diversification of all the drones.
 
 \begin{figure}[h]
 \centering
