@@ -1,19 +1,19 @@
 \section{Software}
 
-We now list all the software adopted in order to execute the algorithm
+We now list the software adopted to execute the algorithm
 in a real environment and in the simulated one.
 
 The principal software used to manage the distributed architecture is ROS Kinetic
 Kame \cite{ros}.
-ROS is a robotic middleware, which can manage more machines in a distributed environment,
-with a structure which is mainly publisher-subscriber.
+ROS is a robotic middleware with a structure which is mainly publisher-subscriber
+and it can manage more machines in a distributed environment.
 The central part of the ROS architecture is a node called ROS core, which manages
 the topics of the system and the subscriptions.
 The ROS core offers also other functionalities, such as the Parameter Server or the
 possibility to advertise services.
 The Parameter Server is a central infrastructure, which is responsible for storing
 configuration parameters loaded by the nodes of the system.
-These parameters can be retrieved by other nodes and used whether needed.
+These parameters can be retrieved by other nodes and used if necessary.
 Instead, a ROS service is a sort of remote function call. One node can advertise
 the service, which can be called by any other node. The call is synchronous,
 so the caller is blocked until the callee has executed its callback function.
@@ -48,20 +48,20 @@ The Intel Edison runs a version of Debian called Jubilinux, at version 0.1.1 \ci
 Both companions, the Raspberry and the Edison, are provided with ROS Kinetic and
 both have to execute some ROS nodes in order to communicate with the other drones.
 
-First of all, they run Mavros node \cite{mavros}.
-This kind of node can be downloaded from GitHub and manages the conversion of the
+Both of them run Mavros nodes \cite{mavros}.
+which can be downloaded from GitHub and manage the conversion of the
 information taken from the ROS topics to the serial port and vice versa. Indeed,
 the ROS messages are converted into Mavlink messages and sent through the serial
 to the Pixfalcon autopilot. The same is done for the Mavlink messages from the
 autopilot, which are published on ROS topics.
 
-The second kind of ROS node run by the companions, is a custom consensus node, which
+The second kind of ROS node run by the companions is a custom consensus node, which
 loads the desired trajectory and sends the next set point to the Mavros node.
-This node will be analyzed in details in the chapter \ref{chap:consensus_node}.
+This node will be analyzed in detail in the chapter \ref{chap:consensus_node}.
 
 \subsection{Pixfalcon}
-The Pixfalcon autopilot is flashed with an open source firmware,
-the PX4 Pro Autopilot \cite{px4}, which is downloadable from GitHub.
+The Pixfalcon autopilot is flashed with PX4 Pro Autopilot \cite{px4},
+an open source firmware downloadable from GitHub.
 The release used is the v1.5.5.
 
 \subsection{Simulation}
@@ -70,8 +70,8 @@ In particular, the physical engine used is Gazebo \cite{gazebo}, which is an Ope
 Source project.
 
 \subsection{Additional software}
-We use Matlab R2016\_B \cite{matlab} to process the data and plot the graphs.
-We also use it to validate some theoretical results.
+We use Matlab R2016\_B \cite{matlab} to process the data, to plot the graphs and
+to validate some theoretical results.
 
 This document is written in  \LaTeX \ \cite{latex} and the code IDE used is Atom \cite{atom},
 while the versioning control platform used are GitHub \cite{github} and GitLab \cite{gitlab}.

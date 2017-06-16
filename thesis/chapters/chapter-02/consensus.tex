@@ -1,0 +1,40 @@
+In this chapter we will address the deployment of the previous state of the art
+for our specific case. In particular, we will use a formation of UAVs, which is
+composed by heterogeneous vehicles with autopilot.
+
+First of all, the trajectory used during our experiments are polynomials curves.
+In particular, we use Bézier curves, because of the existence of many
+computationally efficient algorithms designed for this kind curves,
+such as algorithms to efficiently compute the minimum distance between two Bezier curves
+and the existence of a closed-form solution for the arc lengths of the paths.
+As we have specified in the section \ref{sec:parametrized_trajectory}, we decouple the
+trajectory into a spatial path, $p_{d,i}(\zeta_i)$, and an associated timing law.
+
+For the spatial path we use quintic Bezier curves for the $x$, $y$ and $z$ coordinates,
+while we use a third degree polynomial for the $yaw$ of the drone since we need less
+elaborated trajectories.
+Since we are using drones with a decoupled control of $x$, $y$, $z$ and $yaw$, the
+polynomials are completely independent.
+The timing law associated to these curves is a Bezier third order polynomial.
+So, in our case, we have five polynomials which have to be evaluated in real time
+in order to provide the set points. The rate at which we evaluate the trajectory
+is $5 Hz$.
+
+The trajectory which describes the mission of a single drone is shown in the
+following system.
+
+\[
+  \begin{cases}
+    x_i(\zeta_i) = \sum_{j=0}^{5}{\bar{x}_{i,j} b_j^5(\zeta_i)}\\
+    y_i(\zeta_i) = \sum_{j=0}^{5}{\bar{y}_{i,j} b_j^5(\zeta_i)}\\
+    z_i(\zeta_i) = \sum_{j=0}^{5}{\bar{z}_{i,j} b_j^5(\zeta_i)}\\
+    yaw_i(\zeta_i) = \sum_{j=0}^{3}{\bar{yaw}_{i,j} b_j^3(\zeta_i)}\\
+    \zeta_i(t_d) = \sum_{j=0}^{3}{\bar{\zeta}_{i,j} b_j^3(t_d)}\\
+  \end{cases}
+\]
+
+$\bar{x}_{i,j}$, $\bar{y}_{i,j}$, $\bar{z}_{i,j}$, $\bar{yaw}_{i,j}$ and $\bar{\zeta}$ $\in \mathbb{R}$
+are the desired control points of the spatial path and $b_n^m$ are the (up to degree $m$)
+Bernstein basis polynomials.
+We do not enter in details about the Bezier curves and Bernstein basis polynomials,
+because it is not the objective of this work.

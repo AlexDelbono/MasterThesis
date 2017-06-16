@@ -1,9 +1,9 @@
 \section{Hardware}
 
-The hardware used to run the system is heterogeneous and we will show in details
+The hardware used to run the system is heterogeneous and we will show in detail
 the machines involved in the project.
 
-First of all, we used a desktop pc as a ground station. It specifics are listed below:
+A desktop pc, whose characteristics are listed below, will be our ground station:
 \begin{itemize}
   \item Processor: Intel Core(TM) i5-6500 CPU @ 3.20GHz
   \item Memory: 16 GB
@@ -11,7 +11,7 @@ First of all, we used a desktop pc as a ground station. It specifics are listed 
   \item Storage: 230 GB
 \end{itemize}
 
-On this machine, we run a virtual machine which has the following specifics:
+On this machine, we will run a virtual machine which has the following specifications:
 \begin{itemize}
   \item Processor: 1 Core
   \item Memory: 4 GB
@@ -21,11 +21,11 @@ On this machine, we run a virtual machine which has the following specifics:
 
 The flying vehicles involved in the mission are of two kinds, but both adopt the
 same general configuration, even with different hardware. Indeed, they are equipped
-with a flight control unit connected with a companion microcomputer by the serial port.
-The microcomputer communicates with the ground station using the Wifi.
+with a flight control unit connected to a companion microcomputer by the serial port.
+The microcomputer communicates with the ground station through the Wi-Fi connection.
 
 \subsection{Pixfalcon}
-The flight control unit adopted is the Pixfalcon (figure \ref{fig:hardware_pixfalcon})
+The flight control unit adopted is the Pixfalcon, (figure \ref{fig:hardware_pixfalcon})
 which belongs to the family of the Pixhawk \cite{pixhawk}.
 
 \begin{figure}[h]
@@ -66,9 +66,6 @@ Its specifications are the following:
 \end{itemize}
 
 \subsection{Intel Edison}
-The companion computers are of two types.
-The first kind is the Intel Edison \cite{edison} (figure \ref{fig:hardware_edison})
-which is a general purpose computer.
 
 \begin{figure}[h]
 \centering
@@ -77,7 +74,9 @@ which is a general purpose computer.
 \label{fig:hardware_edison}
 \end{figure}
 
-The specifications are the following:
+The companion computers are of two types.
+The first kind is the Intel Edison \cite{edison} (figure \ref{fig:hardware_edison})
+which is a general purpose computer with the following specifications:
 
 \begin{itemize}
   \item Atom 2-Core (Silvermont) x86 @ 500 MHz
@@ -86,8 +85,6 @@ The specifications are the following:
 \end{itemize}
 
 \subsection{RaspberryPi Zero}
-The second kind of companion is the RaspberryPi Zero \cite{raspberry}
-(figure \ref{fig:hardware_raspberry}).
 
 \begin{figure}[h]
 \centering
@@ -96,7 +93,8 @@ The second kind of companion is the RaspberryPi Zero \cite{raspberry}
 \label{fig:hardware_raspberry}
 \end{figure}
 
-Its specifications are the following:
+The second kind of companion is the RaspberryPi Zero \cite{raspberry}
+(figure \ref{fig:hardware_raspberry}), with the following specifications.
 
 \begin{itemize}
   \item Processor:
@@ -113,10 +111,10 @@ Its specifications are the following:
 \end{itemize}
 
 \subsection{Motive Optitrack}
-The motion capture system is Motive Optitrack \cite{optitrack}.
-We use eight Optitrack Prime 13 cameras \cite{prime13},
-arranged on a square as show in the figure \ref{fig:camera_square}. 
-The defined volume is a cube of 5 meters per side,
+The motion capture system is Motive Optitrack \cite{optitrack},
+we use eight Optitrack Prime 13 cameras \cite{prime13},
+arranged on a square as show in the figure \ref{fig:camera_square}.
+The cameras define a volume, which is a cube of 5 meters per side,
 and the drones can fly without obstacles inside it.
 
 \begin{figure}[h]
@@ -126,12 +124,12 @@ and the drones can fly without obstacles inside it.
 \label{fig:camera_square}
 \end{figure}
 
-The cameras are connected to a Netgear Prosafe 28PT GE POE \cite{netgear} switch using
+The cameras are connected to a Netgear Prosafe 28PT GE POE \cite{netgear} switch through
 Gigabit Ethernet cables.
 
-In order to be visible by the Optitrack system, every drone must be equipped with
+In order to be seen by the Optitrack system, every drone must be equipped with
 markers (figure \ref{fig:marker}) with different configurations,
-which make possible the diversification of all the drones.
+which differentiate the drones from each other.
 
 \begin{figure}[h]
 \centering
@@ -140,13 +138,13 @@ which make possible the diversification of all the drones.
 \label{fig:marker}
 \end{figure}
 
-The two models of drone which we will use are presented in the figures \ref{fig:ant1}
-and \ref{fig:hexa}. The first one is the Ant model, which is equipped with the Raspberry
-Pi Zero and the Pixfalcon. It is a tiny drones which weights about 200g.
+The two models of drones which we will use are presented in the figures \ref{fig:ant1}
+and \ref{fig:hexa}. The first one is the Ant model, a tiny 200g drone, which is
+equipped with the Raspberry Pi Zero and the Pixfalcon.
 The second one is the Hexa model. It is provided with the Intel Edison board and
-the Pixfalcon. It is larger and its diameters is about 40cm long.
+the Pixfalcon board. It is larger and its diameters is about 40cm long.
 As we can see from the figures, the Ant model has four propellers, while the Hexa
-is provided with six ones.
+has six.
 
 \begin{figure}[!htb]
 \minipage{0.5\textwidth}

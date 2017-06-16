@@ -24,6 +24,14 @@
 \usepackage{listings}
 \usepackage{url}
 
+\makeatletter
+\g@addto@macro\normalsize{%
+  \setlength\abovedisplayskip{20pt}
+  \setlength\belowdisplayskip{40pt}
+  \setlength\abovedisplayshortskip{20pt}
+  \setlength\belowdisplayshortskip{40pt}
+}
+
 \lstset{ %
   basicstyle=\footnotesize
 }
@@ -91,16 +99,13 @@
 \chapter*{Sommario}
 \addcontentsline{toc}{chapter}{Sommario}
 \input{initial-final-stuff/sommario.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Table of contents
 \tableofcontents
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% List of figures
 \listoffigures
 \addcontentsline{toc}{chapter}{List of figures}
-\cleardoublepage{}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% List of tables
-\listoftables
-\addcontentsline{toc}{chapter}{List of tables}
 \cleardoublepage{}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Introduction
