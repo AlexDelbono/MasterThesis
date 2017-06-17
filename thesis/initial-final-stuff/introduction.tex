@@ -8,11 +8,130 @@
 %Structure of the thesis
 
 These years are characterized by the development of the robotics.
-The increasing number of applications of mobile robots and drones in many fields
-has brought important progresses in the autonomy of the vehicles.
-The power consumptions of the machines are significantly reduced and we are now
-able to build smaller and lighter vehicles. In particular, in the aerial field,
-there are commercial products which weight about 200g with a flight time of 20
-minutes. These improvements allow us to develop more advanced features, such as
+The growing applications of mobile robots and drones in many fields
+has brought important increasing in the number of robotic vehicles.
+Many commercial solutions are available, but in many cases they offer
+a product which needs an expert pilot. For this reason and due to the high prices,
+the diffusion of mobile robots is limited. In the latest years, these problems were
+mitigated and we now see lower prices and easier to use products. This will bring a
+growing non professional diffusion of robotic vehicles which, hopefully, will populate
+our houses and help us in our life.
+The most important application of UAVs are the ones related to exploration and data
+collection. Indeed, drones are fundamental in inspection of unknown areas, such as
+forests or unreachable terrains.
+Also the monitoring of industrial artifacts constitutes a valuable application of UVAs.
+For instance, solar panels, wind turbines, high-voltage cables or tubes can be
+supervised using aerial vehicles.
+The multimedia production is the field in which the drones are most present. Indeed,
+most of the machines are equipped with high-definition cameras in order to provide
+professional videos.
+
+The power consumptions of the machines are significantly reduced in the last years
+and we are now able to build smaller and lighter vehicles.
+In particular, in the aerial field, there are commercial products which weight
+about 200g with a flight time of 20 minutes.
+These improvements allow us to develop more advanced features, such as
 trajectory planning, obstacles avoidance, formation flight.
-  
+The development of autonomous UAVs is fundamental in application such as humanitarian
+response around the world. When a natural calamity happens, the UAVs can play a
+crucial role, delivering essential goods or finding missing people. Moreover, the
+operations can be done without risking the safety or life of the rescuers, because
+they can act remotely or plan an autonomous mission.
+
+The trajectory planning is essential for the development of autonomous vehicles,
+because the generation of a feasible trajectory for a mission is a requirement,
+otherwise no mission can be done.
+The trajectory generation is an hard problem, because of its computational complexity.
+Indeed, many suboptimal algorithm have been developed in order to reduce the
+complexity.
+There are different classes of planning algorithm and they can be summarized as follows:
+\begin{itemize}
+  \item Artificial Potential Field: these algorithms assigns a value of the potential
+  for every point in the map. The goal has the lowest (highest) value and the obstacles
+  have high (low) values. Then, the robot tries to descend (climb) the potential,
+  in order to reach the goal.
+
+  \item Sampling Based Planning: random samples are used to find a path from the
+  starting point to the goal. Advanced random samples techniques can be used in order
+  to reduce the complexity of the algorithm.
+
+  \item Grid Based Planning: these kind of algorithm overlay a grid on the map, so
+  every configuration corresponds with a grid pixel.
+  The robot can move from one grid pixel to any adjacent grid pixels as long
+  as that grid pixel does not contain an obstacle.
+
+  \item Reward-Based Planning: the robot can apply different actions in every state
+  of the world. The outcome of an action can be not deterministic and after every
+  action, the robot gains a reward. The objective of the robot is to maximize the
+  sum of the rewards.
+\end{itemize}
+
+Another important aspect is the obstacle avoidance. The trajectory usually is planned
+offline, when the mission is not started yet. So, the trajectory does not take into
+account the fact that an unplanned obstacle might interfere with the mission. In this
+case another algorithm is implemented in order to run online. This kind of algorithms
+are called obstacle avoidance algorithms and they replan locally the trajectory, in
+order to get rid of unforeseen events. These algorithms need the drone to be equipped
+with proximity sensors, which provide information about the surrounding environment.
+Different methodologies have been developed for obstacles avoidance. The main ones are
+summarized below without details.
+
+\begin{itemize}
+  \item Artificial Potential Field: as before, the idea of this approach is that
+  obstacles exert a virtual repulsive force, given by the potential field, to push
+  away the robot from them and the goal position generates a virtual attractive
+  force to guide the robot to it.
+
+  \item Virtual Force Field method (VFF): is the combination of the Artificial Potential
+  Field with the concept of Probabilistic Occupancy Grid maps.
+
+  \item Fuzzy Controller for Obstacle Avoidance: as the name says, a fuzzy controller
+  is used to derives the variable for the vehicle’s orientation and acceleration,
+  depending on the current perception of the robot’s sensors
+
+  \item Vector Field Histogram method (VFH): improved version of the VFF method.
+
+  \item VFH+, VFH$^*$ method: improved versions of the VFH method, but more computational costly.
+  The most recent one is the VFH method, which uses an A$^*$ search.
+
+  \item Traversability Field Histogram (TFH): The local path planner bases on
+  the VFH concept but is extended by the information provided within the Traversability Map.
+
+  \item Dynamic Window Approach: the algorithm takes into account the dynamic and kinematic constraints
+  of the robot and it is similar to the VFH+ algorithm. The method is called
+  dynamic window approach and considers only admissible velocities which can be
+  reached within the next time interval and which allow the robot to stop safely.
+
+  \item Curvature Velocity Space method: This method chooses a point in the linear-angular
+  velocity space which satisfies some constraints and maximizes an objective function.
+  This objective function tries to move the robot close to the commanded direction at
+  the highest feasible speed, while travelling the trajectory with the largest clearance from obstacles.
+
+  \item Beam Curvature method: improvement for the curvature velocity space method.
+
+  \item Nearness diagram Navigation: it is similar to the VFH method, but uses
+  a polar histogram to derive actions to be taken for the robot.
+\end{itemize}
+
+When multiple machines have to fly in a formation, a synchronization mechanism is
+needed. Indeed, if one of the drones has to deviate from the planned trajectory
+(for instance, because of an unplanned obstacle), the formation must be preserved.
+To reach the synchronization, the vehicles must communicate with each others and
+exchange information.
+Notions from graph theory are needed to analyze the behaviour of the system
+and demonstrate the convergence properties.
+
+This work is focused on the presentation of a distributed synchronization algorithm,
+which we call "Consensus Algorithm". Every drones must exchange its mission progression
+with its neighbors and must adjust its mission progression based on the information
+received from the other vehicles.
+The algorithm is a distributed algorithm and it is executed on every vehicles.
+
+
+In the first chapter, we will show the theoretical aspects of the of the "Consensus Algorithm".
+Then, we will provide a general overview of the hardware and software used to deploy the algorithm.
+In the third chapter we will show the software implementation of the main part of the
+system, providing classes and snippets of code.
+At the end, we will explain in the fourth and fifth chapters the simulated and experimental results of
+our work. We will apply the algorithm to a real system and we will present our results and its
+performances.
