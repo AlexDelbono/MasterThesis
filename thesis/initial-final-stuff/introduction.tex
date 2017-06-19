@@ -10,10 +10,10 @@
 These years are characterized by the development of the robotics.
 The growing applications of mobile robots and drones in many fields
 has brought important increasing in the number of robotic vehicles.
-Many commercial solutions are available, but in many cases they offer
+Many commercial solutions are available, but, in many cases, they offer
 a product which needs an expert pilot. For this reason and due to the high prices,
 the diffusion of mobile robots is limited. In the latest years, these problems were
-mitigated and we now see lower prices and easier to use products. This will bring a
+mitigated and we now find lower prices and easier-to-use products. This will bring a
 growing non professional diffusion of robotic vehicles which, hopefully, will populate
 our houses and help us in our life.
 The most important application of UAVs are the ones related to exploration and data
@@ -35,7 +35,7 @@ trajectory planning, obstacles avoidance, formation flight.
 The development of autonomous UAVs is fundamental in application such as humanitarian
 response around the world. When a natural calamity happens, the UAVs can play a
 crucial role, delivering essential goods or finding missing people. Moreover, the
-operations can be done without risking the safety or life of the rescuers, because
+operations can be done without risking the safety or the life of the rescuers, because
 they can act remotely or plan an autonomous mission.
 
 The trajectory planning is essential for the development of autonomous vehicles,
@@ -46,7 +46,7 @@ Indeed, many suboptimal algorithm have been developed in order to reduce the
 complexity.
 There are different classes of planning algorithm and they can be summarized as follows:
 \begin{itemize}
-  \item Artificial Potential Field: these algorithms assigns a value of the potential
+  \item Artificial Potential Field: these algorithms assign a value of the potential
   for every point in the map. The goal has the lowest (highest) value and the obstacles
   have high (low) values. Then, the robot tries to descend (climb) the potential,
   in order to reach the goal.
@@ -86,7 +86,7 @@ summarized below without details.
   Field with the concept of Probabilistic Occupancy Grid maps.
 
   \item Fuzzy Controller for Obstacle Avoidance: as the name says, a fuzzy controller
-  is used to derives the variable for the vehicle’s orientation and acceleration,
+  is used to derive the variables for the vehicle’s orientation and acceleration control,
   depending on the current perception of the robot’s sensors
 
   \item Vector Field Histogram method (VFH): improved version of the VFF method.
@@ -95,7 +95,7 @@ summarized below without details.
   The most recent one is the VFH method, which uses an A$^*$ search.
 
   \item Traversability Field Histogram (TFH): The local path planner bases on
-  the VFH concept but is extended by the information provided within the Traversability Map.
+  the VFH concept, but is extended by the information provided within the Traversability Map.
 
   \item Dynamic Window Approach: the algorithm takes into account the dynamic and kinematic constraints
   of the robot and it is similar to the VFH+ algorithm. The method is called
@@ -122,14 +122,14 @@ Notions from graph theory are needed to analyze the behaviour of the system
 and demonstrate the convergence properties.
 
 This work is focused on the presentation of a distributed synchronization algorithm,
-which we call "Consensus Algorithm". Every drones must exchange its mission progression
+which we call “Consensus Algorithm”. Every drones must exchange its mission progression
 with its neighbors and must adjust its mission progression based on the information
 received from the other vehicles.
 The algorithm is a distributed algorithm and it is executed on every vehicles.
 
 
-In the first chapter, we will show the theoretical aspects of the of the "Consensus Algorithm".
-Then, we will provide a general overview of the hardware and software used to deploy the algorithm.
+In the first chapter, we will show the theoretical aspects of the “Consensus Algorithm” and then,
+in the second chapter, we will provide a general overview of the hardware and software used to deploy the algorithm.
 In the third chapter we will show the software implementation of the main part of the
 system, providing classes and snippets of code.
 At the end, we will explain in the fourth and fifth chapters the simulated and experimental results of
