@@ -1,31 +1,31 @@
 %%Introduction of the chapter
-The literature about the "Consensus" has grown significantly in the latest years
+The literature about the “Consensus” has grown significantly in the latest years
 because of the increasing presence of autonomous vehicles. This, in accordance with
-the new improvements in robotics, has brought to growing interest in consensus
+the new improvements in robotics, has brought to a growing interest in consensus
 between multiple agents which have to accomplish a mission in cooperative or adversarial
 scenarios.
 
-The "Consensus" theory has its roots in Graph Theory and Automatics and it can
+The “Consensus” theory has its roots in Graph Theory and Automatics and it can
 be used to coordinate a mission in order to achieve the synchronization between
 the vehicles even during unforeseen events which force one or more
 components of the mission to change the planned trajectory or task. In this case,
 the other components identify this variation and they act to preserve the
 synchronization.
 
-The "Consensus" algorithm is a distributed algorithm which can sometimes be simulated
+The “Consensus” algorithm is a distributed algorithm which can sometimes be simulated
 in a centralized fashion because of the reduced computational power of the machines
 involved in the mission, which are equipped with low power hardware to account for
 the crucial issue of power consumption.
 In this scenario, a centralized server simulates the algorithm and communicates with
 all the machines.
 
-The most common "Consensus" application is a spatial and timing consensus: in this
+The most common “Consensus” application is a spatial and timing consensus: in this
 implementation, each vehicle of the formation has to travel along a specified trajectory and the
 completion of the mission occurs when all the agents reach the final positions of their
 spatial paths. The algorithm has to guarantee that the difference between
 the ending time at which all the vehicles finish their tasks is minimized and
 asymptotically goes to zero, when the execution time goes to infinity and no other
-unforeseen events happens.
+unforeseen event happens.
 We also consider formations of Unmanned Aerial Vehicles, but the key concepts can
 be freely applied to other categories of robots when they are able to follow a trajectory.
 This study is focused on this kind of application, and further
@@ -34,8 +34,8 @@ simulation results and experimental achievements are presented in chapters
 
 In the next sections we refer to the main work of Venanzio Cichella \cite{cichellaMain}
 in the field of UAV consensus, in order to provide an homogeneous state of the art
-about the "Consensus".
-The paper considers all the details needed to build a "Consensus" system.
+about the “Consensus”.
+The paper considers all the details needed to build a “Consensus” system.
 The main components of this kind of system are listed and explained below:
 \begin{itemize}
   \item Parametrized trajectory

@@ -12,9 +12,9 @@ network delays.
 The information exchanged is composed by the virtual time of the agents,
 $\gamma_i(t)$.
 
-The topology of the graph $\Gamma(t)$ that represents the communication network
+The topology of the graph, $\Gamma(t)$, that represents the communication network,
 must comply with the following constraint in order to guarantee the convergence
-of the "Consensus" algorithm:
+of the “Consensus” algorithm:
 
 \begin{equation}  \label{eq:graph_cond}
   \frac{1}{NT} \int_t^{t+T} Q L (\tau) Q^T d \tau \ge \mu I_{N-1}, \quad for \; all \quad t \ge 0
@@ -22,7 +22,7 @@ of the "Consensus" algorithm:
 where $L(t) \in \mathbb{R}^{N \times N}$ is the Laplacian of the graph $\Gamma(t)$
 and $Q \in \mathbb{R}^{(N-1) \times N}$ is a matrix such that $Q 1_N = 0$ and
 $QQ^T = I_{N-1}$, with $1_N$ being a vector in $\mathbb{R}^N$ whose components
-are all $1$.
+are all $1$s.
 In \eqref{eq:graph_cond}, the parameters $T > 0$ and $\mu \in (0,1]$ represent
 a measure of the level of connectivity of the communication graph.
 This condition requires the graph $\Gamma(t)$ to be connected only in an integral

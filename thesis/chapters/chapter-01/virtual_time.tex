@@ -5,7 +5,7 @@ moving along the path computed offline by the trajectory generation algorithm.
 The objective can be achieved introducing a \textit{virtual time}, $ \gamma_i $,
 which is used to evaluate the trajectory and can be adjusted online to reach
 the synchronization even when external disturbances occur.
-Thus, the position of the $ i^{th} $ virtual target is denoted by $ p_{d,i} ( \gamma_i (t))$
+Thus, the position of the $ i^{th} $ virtual target is denoted by $ \bm{p}_{d,i} ( \gamma_i (t))$
 and the $ i^{th} $ vehicle tries to follow it, by reducing to zero a suitably defined
 error vector using control inputs.
 
@@ -22,9 +22,9 @@ have to be followed by the $ i^{th}$ vehicle at time $t$
 
 \begin{equation}  \label{eq:pos_vel_acc_def}
   \begin{aligned}
-  p_{c,i}(t) = \ & p_{d,i}(\gamma_i(t)) \\
-  v_{c,i}(t) = \ & \dot{p}_{d,i} (\gamma_i(t), \dot{\gamma}_i (t)) \\
-  a_{c,i}(t) = \ & \ddot{p}_{d,i} (\gamma_i(t), \dot{\gamma}_i(t), \ddot{\gamma}_i(t))
+  \bm{p}_{c,i}(t) = \ & \bm{p}_{d,i}(\gamma_i(t)) \\
+  \bm{v}_{c,i}(t) = \ & \dot{\bm{p}}_{d,i} (\gamma_i(t), \dot{\gamma}_i (t)) \\
+  \bm{a}_{c,i}(t) = \ & \ddot{\bm{p}}_{d,i} (\gamma_i(t), \dot{\gamma}_i(t), \ddot{\gamma}_i(t))
   \end{aligned}
 \end{equation}
 
@@ -35,7 +35,7 @@ Indeed, if $ \dot{\gamma} = 1$, for all $t \in [0, T_d]$, with $\gamma_i(0) = 0$
 it implies that $\gamma_i(t) = t_d$ for all $t$ and thus:
 
 \begin{equation*}
-  p_{c,i}(t) = p_{d,i}(\gamma_i(t)) = p_{d,i}(t) = p_{d,i} (t_d)
+  \bm{p}_{c,i}(t) = \bm{p}_{d,i}(\gamma_i(t)) = \bm{p}_{d,i}(t) = \bm{p}_{d,i} (t_d)
 \end{equation*}
 
 In this particular case, the desired and commanded trajectories coincide

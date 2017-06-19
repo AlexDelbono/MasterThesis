@@ -1,14 +1,14 @@
 \section{Consensus law\label{sec:consensus_law}}
 
-Now, we formally state the path following problem. We define as $p_i(t) \in \mathbb{R}^3$
-the position of the center of mass of the $i^{th}$ agent and since $p_{c,i}(t)$
-describes the commanded position to be followed by the agent at time $t$, the errors
+Now, we formally state the path following problem. We define as $\bm{p}_i(t) \in \mathbb{R}^4$
+the position of the center of mass of the $i^{th}$ agent and its $yaw$ and since $\bm{p}_{c,i}(t)$
+describes the commanded pose to be followed by the agent at time $t$, the errors
 are defined as:
 
 \begin{equation}  \label{eq:pos_vel_acc_err}
   \begin{aligned}
-  e_{p,i}(t) = \ & p_{c,i}(t) - p_i(t) \in  \mathbb{R}^3\\
-  e_{v,i}(t) = \ & v_{c,i}(t) - \dot{p}_i(t) \in  \mathbb{R}^3
+  \bm{e}_{p,i}(t) = \ & \bm{p}_{c,i}(t) - \bm{p}_i(t) \in  \mathbb{R}^4\\
+  \bm{e}_{v,i}(t) = \ & \bm{v}_{c,i}(t) - \dot{\bm{p}}_i(t) \in  \mathbb{R}^4
   \end{aligned}
 \end{equation}
 
@@ -34,7 +34,7 @@ at the same rate of progression if:
   \dot{\gamma}_i(t) - \dot{\gamma}_d(t) = 0 \quad for \; all \quad i \in {1 , \dots , N}
 \end{equation}
 
-Adjusting $\dot{\gamma}_d$ we can decide the speed of the mission: for instance,
+Adjusting $\dot{\gamma}_d$, we can decide the speed of the mission: for instance,
 if we set $\dot{\gamma}_d = 1$ and \eqref{eq:diff_gamma} and \eqref{eq:diff_dot_gamma}
 are satisfied for all the vehicles, then the mission is executed at the speed
 originally planned in the trajectory generation phase.
@@ -42,40 +42,40 @@ If instead we use $\dot{\gamma}_d > 1$ or $\dot{\gamma}_d < 1$ we carry out the
 mission faster or slower.
 This term can be changed in real time in order to avoid moving objects or
 unplanned obstacles, which make it necessary to change one of the path of the agents.
-For the purpose of "Consensus", the parameter is only a reference command,
+For the purpose of “Consensus”, the parameter is only a reference command,
 rather than a control input.
 
-Now we introduce the coordination control law which regulates the evolution of
+Now, we introduce the coordination control law which regulates the evolution of
 $\ddot{\gamma}_i(t)$ during the time and determines $\gamma_i(t)$:
 
 \begin{equation} \label{eq:cons_law}
   \begin{aligned}
-    \ddot{\gamma}_i(t) = & \; \ddot{\gamma}_d(t) - b (\dot{\gamma}_i(t) - \dot{\gamma}_d(t)) - a \sum_{j \in \aleph_i} (\gamma_i(t) - \gamma_j(t)) - \overline{\alpha}_i (e_{p,i}(t)) \\
+    \ddot{\gamma}_i(t) = & \; \ddot{\gamma}_d(t) - b (\dot{\gamma}_i(t) - \dot{\gamma}_d(t)) - a \sum_{j \in \aleph_i} (\gamma_i(t) - \gamma_j(t)) - \overline{\alpha}_i (\bm{e}_{p,i}(t)) \\
     \dot{\gamma}_i(0) = & \; \dot{\gamma}_d(0) = 1 \\
     \gamma_i(0) = & \; \gamma_d(0) = 0
   \end{aligned}
 \end{equation}
-where $a$ and $b$ are positive coordination control gains, while $\overline{\alpha}_i (e_{p,i}(t)$
+where $a$ and $b$ are positive coordination control gains, while $\overline{\alpha}_i (\bm{e}_{p,i}(t))$
 is defined as:
 
 \begin{equation} \label{eq:error_term}
-  \overline{\alpha}_i (e_{p,i}(t)) = \frac{v_{c,i}^T(t) e_{p,i}(t)}{||v_{c,i}(t)|| + \epsilon}
+  \overline{\alpha}_i (\bm{e}_{p,i}(t)) = \frac{\bm{v}_{c,i}^T(t) \bm{e}_{p,i}(t)}{||\bm{v}_{c,i}(t)|| + \epsilon}
 \end{equation}
 
-with $\epsilon$ being a positive design parameter, $e_{p,i}$ the position
+with $\epsilon$ being a positive design parameter, $\bm{e}_{p,i}$ the position
 error vector defined in \eqref{eq:pos_vel_acc_err} and $\aleph_i$ the set of the
 neighbors which can communicate with the $i^{th}$ vehicle (we will see details later).
-In the equation \eqref{eq:cons_law} we have four terms. The feedforward term
-$\ddot{\gamma}_d$ allows the virtual target to follow the acceleration profile of
+In the equation \eqref{eq:cons_law} we have four terms. The feedforward term,
+$\ddot{\gamma}_d$, allows the virtual target to follow the acceleration profile of
 $\gamma_d$.
-The second term $- b (\dot{\gamma}_i(t) - \dot{\gamma}_d(t))$ reduces the error
+The second term, $- b (\dot{\gamma}_i(t) - \dot{\gamma}_d(t))$, reduces the error
 between the speed profile imposed by $\dot{\gamma}_d(t)$ and $\dot{\gamma}_i(t)$,
 which corresponds to the control objective given in \eqref{eq:diff_dot_gamma}.
 In particular, if $\dot{\gamma}_d(t)$ is one, then the virtual target converges
 to the desired speed profile chosen in the trajectory generation phase.
-The third term $- a \sum_{j \in \aleph_i} (\gamma_i(t) - \gamma_j(t))$ ensures that
+The third term, $- a \sum_{j \in \aleph_i} (\gamma_i(t) - \gamma_j(t))$, ensures that
 all the vehicles are coordinated with their neighbors as specified in \eqref{eq:diff_gamma}.
-Finally, the fourth term $- \overline{\alpha}_i (e_{p,i}(t))$ is a correction term
+Finally, the fourth term, $- \overline{\alpha}_i (\bm{e}_{p,i}(t))$, is a correction term
 used to take into account for the path following errors of the agent. Indeed, if the
 vehicle is behind its target, the term is not zero and the target slows down in order
 to wait for the real vehicle.
