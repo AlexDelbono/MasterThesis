@@ -7,42 +7,41 @@
 %A brief description of the work
 %Structure of the thesis
 
-These years are characterized by the development of the robotics.
+In recent years, the field of robotics had developed rapidly.
 The growing applications of mobile robots and drones in many fields
-has brought important increasing in the number of robotic vehicles.
+has brought an important increase in the number of robotic vehicles.
 Many commercial solutions are available, but, in many cases, they offer
 a product which needs an expert pilot. For this reason and due to the high prices,
 the diffusion of mobile robots is limited. In the latest years, these problems were
-mitigated and we now find lower prices and easier-to-use products. This will bring a
-growing non professional diffusion of robotic vehicles which, hopefully, will populate
-our houses and help us in our life.
-The most important application of UAVs are the ones related to exploration and data
+mitigated and we now find lower prices and easier-to-use products. This will boost
+the diffusion of non-professional robotic vehicles in our houses and in our daily activities.
+Applications of UAVs are the ones are the ones related to exploration and data
 collection. Indeed, drones are fundamental in inspection of unknown areas, such as
 forests or unreachable terrains.
-Also the monitoring of industrial artifacts constitutes a valuable application of UVAs.
-For instance, solar panels, wind turbines, high-voltage cables or tubes can be
+Moreover, the monitoring of industrial artifacts constitutes a valuable application of UVAs,
+such as for instance, solar panels, wind turbines, high-voltage cables or tubes can be
 supervised using aerial vehicles.
 The multimedia production is the field in which the drones are most present. Indeed,
 most of the machines are equipped with high-definition cameras in order to provide
 professional videos.
 
-The power consumptions of the machines are significantly reduced in the last years
+The power consumptions of the machines has been significantly reduced in the recent years
 and we are now able to build smaller and lighter vehicles.
-In particular, in the aerial field, there are commercial products which weight
+In particular, in the aerial field there are commercial products which weight
 about 200g with a flight time of 20 minutes.
 These improvements allow us to develop more advanced features, such as
 trajectory planning, obstacles avoidance, formation flight.
-The development of autonomous UAVs is fundamental in application such as humanitarian
+The development of autonomous UAVs is fundamental for humanitarian
 response around the world. When a natural calamity happens, the UAVs can play a
-crucial role, delivering essential goods or finding missing people. Moreover, the
+crucial role by delivering essential goods or finding missing people. Moreover, the
 operations can be done without risking the safety or the life of the rescuers, because
 they can act remotely or plan an autonomous mission.
 
 The trajectory planning is essential for the development of autonomous vehicles,
-because the generation of a feasible trajectory for a mission is a requirement,
+because the generation of a feasible trajectory for a mission is required,
 otherwise no mission can be done.
-The trajectory generation is an hard problem, because of its computational complexity.
-Indeed, many suboptimal algorithm have been developed in order to reduce the
+The trajectory generation is a difficult problem, because of its computational complexity.
+Indeed, many suboptimal algorithms have been developed in order to reduce this
 complexity.
 There are different classes of planning algorithm and they can be summarized as follows:
 \begin{itemize}
@@ -55,7 +54,7 @@ There are different classes of planning algorithm and they can be summarized as 
   starting point to the goal. Advanced random samples techniques can be used in order
   to reduce the complexity of the algorithm.
 
-  \item Grid Based Planning: these kind of algorithm overlay a grid on the map, so
+  \item Grid Based Planning: this kind of algorithm overlays a grid on the map, so
   every configuration corresponds with a grid pixel.
   The robot can move from one grid pixel to any adjacent grid pixels as long
   as that grid pixel does not contain an obstacle.
@@ -66,11 +65,11 @@ There are different classes of planning algorithm and they can be summarized as 
   sum of the rewards.
 \end{itemize}
 
-Another important aspect is the obstacle avoidance. The trajectory usually is planned
+Another important aspect is the obstacle avoidance. The trajectory is usually planned
 offline, when the mission is not started yet. So, the trajectory does not take into
 account the fact that an unplanned obstacle might interfere with the mission. In this
-case another algorithm is implemented in order to run online. This kind of algorithms
-are called obstacle avoidance algorithms and they replan locally the trajectory, in
+case another algorithm is implemented to run online. This kind of algorithms
+are called obstacle avoidance algorithms and they plan again locally the trajectory, in
 order to get rid of unforeseen events. These algorithms need the drone to be equipped
 with proximity sensors, which provide information about the surrounding environment.
 Different methodologies have been developed for obstacles avoidance. The main ones are
@@ -79,7 +78,7 @@ summarized below without details.
 \begin{itemize}
   \item Artificial Potential Field: as before, the idea of this approach is that
   obstacles exert a virtual repulsive force, given by the potential field, to push
-  away the robot from them and the goal position generates a virtual attractive
+  away the robot from them while the goal position generates a virtual attractive
   force to guide the robot to it.
 
   \item Virtual Force Field method (VFF): is the combination of the Artificial Potential
@@ -114,24 +113,25 @@ summarized below without details.
 \end{itemize}
 
 When multiple machines have to fly in a formation, a synchronization mechanism is
-needed. Indeed, if one of the drones has to deviate from the planned trajectory
+needed. For example, if one of the drones has to deviate from the planned trajectory
 (for instance, because of an unplanned obstacle), the formation must be preserved.
-To reach the synchronization, the vehicles must communicate with each others and
+To reach the synchronization, vehicles must communicate with each other and
 exchange information.
 Notions from graph theory are needed to analyze the behaviour of the system
 and demonstrate the convergence properties.
 
 This work is focused on the presentation of a distributed synchronization algorithm,
-which we call “Consensus Algorithm”. Every drones must exchange its mission progression
+which we call “Consensus Algorithm”. Every drone must exchange its mission progression
 with its neighbors and must adjust its mission progression based on the information
 received from the other vehicles.
-The algorithm is a distributed algorithm and it is executed on every vehicles.
+The algorithm is a distributed algorithm and it is executed on every vehicle.
 
 
-In the first chapter, we will show the theoretical aspects of the “Consensus Algorithm” and then,
+In the first chapter, we will see the theoretical aspects of the “Consensus Algorithm” and then,
 in the second chapter, we will provide a general overview of the hardware and software used to deploy the algorithm.
-In the third chapter we will show the software implementation of the main part of the
+In the third chapter we will take a look at the software implementation of the main part of the
 system, providing classes and snippets of code.
-At the end, we will explain in the fourth and fifth chapters the simulated and experimental results of
-our work. We will apply the algorithm to a real system and we will present our results and its
+Finally, we will explain the simulated and experimental results of our work
+in chapters four and five.
+We will apply the algorithm to a real system and we will present our results and its
 performances.
