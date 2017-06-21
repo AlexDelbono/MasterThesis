@@ -5,7 +5,7 @@ is managed by ROS and it executes a callback function when a new message is publ
 on a specific topic.
 This topic is used by all the drones to publish their consensus variable, $\gamma_i$,
 and it accepts a custom message which contains only a string with the name of the
-owner of the variable and the value itself. The message has also a header, which contains
+owner of the variable and the value itself. The message has also an header, which contains
 general information such as timestamp or message id.
 The structure of the message can be seen in the figure \ref{fig:custom_message}.
 
@@ -20,11 +20,11 @@ The callback function receives the information from the topic and updates a loca
 view of the variables of the neighbors. This information has a timeout validity,
 because we do not want to consider too old values. Indeed, if we consider too old
 values and a problem in the network causes a loss of packets, our drone might
-think which the other drones have a significantly different values of the consensus variables
-and so, wait for them. On the contrary, it is better to discard the values and
+think that the other drones have a significantly different values of the consensus variables
+and so, might wait for them. On the contrary, it is better to discard the values and
 remove the neighbors after a timeout.
 
-In order to store the information, we use a support class, thread safe, which
+In order to store this information, we use a support class, thread safe, which
 provides a procedure to check if the variable is expired or not.
 The signatures of the methods of the class are presented in the figure
 \ref{fig:consensuss_variable_class}.
@@ -38,7 +38,7 @@ value is expired or not before using it.
 \label{fig:consensuss_variable_class}
 \end{figure}
 
-These variables are used in the consensus law %%TODO reference
+These variables are used in the consensus law (\ref{eq:cons_law})
 as $\gamma_j$ of the neighbors and are used to compute the proportional error.
 We can see that the the expiration interval of the values can model the
 fact that the network topology can change.

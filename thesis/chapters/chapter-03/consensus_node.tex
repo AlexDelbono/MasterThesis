@@ -1,9 +1,9 @@
-In this chapter, we will examine the structure of the consensus node: we will see
-its main components, then, we will show some snippets of code
+In this chapter, we will examine the structure of the consensus node. We will see
+its main components and we will show some snippets of code
 in order to make clearer which parts are involved.
 
-As shown in the general architecture, %%TODO reference
-the consensus node is developed as a ROS node which subscribes and publishes messages
+As shown in the general architecture (chapter \ref{chap:system_architecture}),
+the consensus node is developed as a ROS node, which subscribes and publishes messages
 to different topics.
 Moreover, the node offers some ROS services used to start and stop the trajectory
 following algorithm or the consensus one.
@@ -17,32 +17,32 @@ machines with limited amount of resources.
 First of all, the node functionalities are enclosed into a C++ class which initializes
 all the ROS elements and prepares the node to receive the start and stop commands.
 The initialization is done by the class constructor when the object is created.
-In order to apply the consensus dynamic equation, we need
+First, in order to apply the consensus dynamic equation, we need
 the current position of the UAV. The Px4 board already publishes the estimated
-local position on a topic; %%TODO reference
-so, we need to subscribe to that topic to retrieve the messages with the needed
+local position on a topic,
+so, we need to subscribe to that topic to retrieve the messages with the required
 information.
 Second, we want to publish the consensus variable of the drone in the topic used
 by all the other UAVs, because, having obtained the others' consensus variables
 from the same topic, we are able to compute the proportional consensus error.
 Third, we need the next set point and the next desired velocity profile,
-because we want to compute the position error and weight it for the target velocity. %%TODO ref
-At the end, we compute the acceleration of the consensus parameter using the consensus equation %%TODO ref
+because we want to compute the position error and weight it for the target velocity.
+At the end, we compute the acceleration of the consensus parameter using the consensus equation (\ref{eq:cons_law})
 and we publish the next set point. We will see the details through the code.
 All these elements can be summarized and shown in figure \ref{fig:node_in_out}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=0.9\textwidth]{chapters/chapter-03/figures/consensus_node_structure.pdf}
 \caption{Input and output of the node}
 \label{fig:node_in_out}
 \end{figure}
 
-The subscription of a ROS topic works with a callback function, which accepts as
+The subscription of a ROS topic works through a callback function, which accepts as
 parameter the pointer to the new message. Since in our case we have multiple subscriptions
 and we must advertise the start and stop services, we need to implement a multithreading
 architecture which takes care of the concurrent accesses to the state of our object.
-The number of thread used is three and these are their functions:
+The number of threads used is three and these are their functions:
 \begin{itemize}
   \item Start and stop services
   \item Consensus variable callback

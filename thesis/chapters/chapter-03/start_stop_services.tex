@@ -12,7 +12,7 @@ is to follow the trajectory and reach its final position trying to respect the t
 constraints imposed by the trajectory.
 Instead, in the consensus mode, the node does the same computation as before, but
 it also publishes its consensus variable and reads all the other ones.
-It then considers this information and adjusts its variable.
+It then considers this information and adjusts its consensus variable.
 The consensus mode includes the trajectory-only, and can be started even if the
 trajectory-only is already started, while the opposite is not true. When you stop
 the consensus mode, also the trajectory-only is stopped.
@@ -20,8 +20,8 @@ When the mission is accomplished, the current active mode is stopped automatical
 so that you can freely restart one of the two modes without the need of stopping
 the previous one.
 
-The services are implemented using the ROS Service class which manages the whole
-infrastructure needed for calling the service. The call to the service is
+The services are implemented using the ROS Service class, which manages the whole
+infrastructure needed for calling the service. The call of a service is
 synchronous and the caller is blocked until the service function is terminated.
 In this case, we offer two services: one for starting and stoping the trajectory-only
 mode and the other for the consensus mode.
@@ -31,7 +31,7 @@ defined.
 For the two services we have defined the same parameters that are shown in the figure
 \ref{fig:custom_service}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
 \centering
   \lstinputlisting{chapters/chapter-03/code/FlyartCommandBool.srv}
 \caption{Custom service structure}
@@ -40,12 +40,12 @@ For the two services we have defined the same parameters that are shown in the f
 
 The message is composed by two parts: the request and the response.
 In the request we need a boolean field in order to know if
-we want to start or stop the algorithm. The response consists in a boolean variable
-which represents the success of the operation and an exit code which identifies
+we want to start or stop the algorithm. The response consists in a boolean variable,
+which represents the success of the operation, and an exit code, which identifies
 the eventual problems occurred. The constants for the exit codes are directly specified
 in the definition of the service.
 
 The trajectory-only service starts or stops the thread which, taken a local position,
-computes the next set point; while the consensus one starts or stops the same
+computes the next setpoint; while the consensus one starts or stops the same
 thread as before and the one which retrieves the consensus variables from the other
 quadrotors.
