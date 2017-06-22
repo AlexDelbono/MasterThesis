@@ -9,7 +9,7 @@ owner of the variable and the value itself. The message has also an header, whic
 general information such as timestamp or message id.
 The structure of the message can be seen in the figure \ref{fig:custom_message}.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
   \lstinputlisting{chapters/chapter-03/code/GammaMsg.msg}
 \caption{Custom message structure}
@@ -31,7 +31,7 @@ The signatures of the methods of the class are presented in the figure
 We use a container to store the values of the neighbors and we always check if the
 value is expired or not before using it.
 
-\begin{figure}[ht]
+\begin{figure}
 \centering
   \lstinputlisting[language=C++]{chapters/chapter-03/code/GammaParameter.cpp}
 \caption{Consensus variable class}

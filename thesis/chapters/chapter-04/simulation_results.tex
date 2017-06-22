@@ -7,7 +7,7 @@ the PX4 firmware. Indeed, it provides models of the main topologies of aerial ve
 such as plane, VTOL, Tailsitter VTOL and quadrotor.
 We will use the quadrotor model called Iris, which can be shown in the picture \ref{fig:iris_model}.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
 \includegraphics[width=0.9\textwidth]{chapters/chapter-04/figures/iris_model.png}
 \caption{Iris model}
@@ -38,9 +38,9 @@ concept can be extended freely to an arbitrary number of drones.
 The simulation is composed by two drones and the trajectory of the mission is shown
 in \ref{fig:trajectory}.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{chapters/chapter-04/figures/trajectory.pdf}
+\includegraphics[width=0.7\textwidth]{chapters/chapter-04/figures/trajectory.pdf}
 \caption{Trajectory}
 \label{fig:trajectory}
 \end{figure}
@@ -51,9 +51,9 @@ their starting point.
 The evolution of the trajectory during time of the first drone can be seen in the figure
 \ref{fig:trajectory_during_time}.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{chapters/chapter-04/figures/trajectory_during_time.pdf}
+\includegraphics[width=0.7\textwidth]{chapters/chapter-04/figures/pos.eps}
 \caption{Evolution of the trajectory during time of the first drone}
 \label{fig:trajectory_during_time}
 \end{figure}
@@ -63,26 +63,25 @@ Now we can see how the two drones follow their trajectory. It is shown in the fi
 
 \begin{figure}
 \centering
-   \begin{subfigure}[b]{0.8\textwidth}
-   \includegraphics[width=1\linewidth]{chapters/chapter-04/figures/following_1.pdf}
-   \caption{Target following drone 1}
-   \label{fig:following_1}
-\end{subfigure}
+\includegraphics[width=0.7\linewidth]{chapters/chapter-04/figures/following_1.eps}
+\caption{Target following drone 1}
+\label{fig:following_1}
+\end{figure}
 
-\begin{subfigure}[b]{0.8\textwidth}
-   \includegraphics[width=1\linewidth]{chapters/chapter-04/figures/following_2.pdf}
-   \caption{Target following drone 2}
-   \label{fig:following_2}
-\end{subfigure}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{chapters/chapter-04/figures/following_2.eps}
+\caption{Target following drone 2}
+\label{fig:following_2}
 \end{figure}
 
 There are some delays due to the time needed to the autopilot to follow
 the target, but the drones are capable of doing that.
 Indeed, they arrive at the same time in their final position.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{chapters/chapter-04/figures/overlapped.pdf}
+\includegraphics[width=0.7\textwidth]{chapters/chapter-04/figures/overlapped.eps}
 \caption{Two drones positions over time}
 \label{fig:overlapped}
 \end{figure}
@@ -97,9 +96,9 @@ In this scenario, we use the same trajectory as before (figure \ref{fig:trajecto
 but in this case we stop one of the two drones and the other will follow it.
 We can show the disturbance applied at time 11s to the first drone in the figure \ref{fig:disturbance}.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{chapters/chapter-04/figures/pos_1.pdf}
+\includegraphics[width=0.7\textwidth]{chapters/chapter-04/figures/pos_1.eps}
 \caption{Disturbance}
 \label{fig:disturbance}
 \end{figure}
@@ -110,25 +109,24 @@ shown in the figures \ref{fig:following_1_1} and \ref{fig:following_2_1}.
 
 \begin{figure}
 \centering
-   \begin{subfigure}[b]{0.8\textwidth}
-   \includegraphics[width=1\linewidth]{chapters/chapter-04/figures/following_1_1.pdf}
-   \caption{Target following drone 1}
-   \label{fig:following_1_1}
-\end{subfigure}
+\includegraphics[width=0.7\linewidth]{chapters/chapter-04/figures/following_1_1.eps}
+\caption{Target following drone 1}
+\label{fig:following_1_1}
+\end{figure}
 
-\begin{subfigure}[b]{0.8\textwidth}
-   \includegraphics[width=1\linewidth]{chapters/chapter-04/figures/following_2_1.pdf}
-   \caption{Target following drone 2}
-   \label{fig:following_2_1}
-\end{subfigure}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{chapters/chapter-04/figures/following_2_1.eps}
+\caption{Target following drone 2}
+\label{fig:following_2_1}
 \end{figure}
 
 At the end we represent a graph in which we plot the positions of the two drones overlapped
 (figure \ref{fig:overlapped_1}).
 
-\begin{figure}[h]
+\begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{chapters/chapter-04/figures/overlapped_1.pdf}
+\includegraphics[width=0.7\textwidth]{chapters/chapter-04/figures/overlapped_1.eps}
 \caption{Two drones positions over time}
 \label{fig:overlapped_1}
 \end{figure}
@@ -141,9 +139,9 @@ which has travelled so far.
 After the disturbance, the drone can resume the trajectory and complete the mission.
 We can see the effect of the disturbance on the trajectory in the figure \ref{fig:disturbance_2}.
 
-\begin{figure}[h]
+\begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{chapters/chapter-04/figures/pos_2.pdf}
+\includegraphics[width=0.7\textwidth]{chapters/chapter-04/figures/pos_2.eps}
 \caption{Disturbance}
 \label{fig:disturbance_2}
 \end{figure}
@@ -157,25 +155,24 @@ by the two drones in the pictures \ref{fig:following_1_2} and \ref{fig:following
 
 \begin{figure}
 \centering
-   \begin{subfigure}[b]{0.8\textwidth}
-   \includegraphics[width=1\linewidth]{chapters/chapter-04/figures/following_1_1.pdf}
-   \caption{Target following drone 1}
-   \label{fig:following_1_2}
-\end{subfigure}
+\includegraphics[width=0.7\linewidth]{chapters/chapter-04/figures/following_1_1.eps}
+\caption{Target following drone 1}
+\label{fig:following_1_2}
+\end{figure}
 
-\begin{subfigure}[b]{0.8\textwidth}
-   \includegraphics[width=1\linewidth]{chapters/chapter-04/figures/following_2_1.pdf}
-   \caption{Target following drone 2}
-   \label{fig:following_2_2}
-\end{subfigure}
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{chapters/chapter-04/figures/following_2_1.eps}
+\caption{Target following drone 2}
+\label{fig:following_2_2}
 \end{figure}
 
 At the end we represent a graph in which we plot the positions of the two drones overlapped
 (figure \ref{fig:overlapped_2}).
 
-\begin{figure}[h]
+\begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{chapters/chapter-04/figures/overlapped_2.pdf}
+\includegraphics[width=0.7\textwidth]{chapters/chapter-04/figures/overlapped_2.eps}
 \caption{Two drones positions over time}
 \label{fig:overlapped_2}
 \end{figure}
