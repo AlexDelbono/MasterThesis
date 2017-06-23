@@ -1,12 +1,19 @@
 \section{Parametrized trajectory\label{sec:parametrized_trajectory}}
 The trajectory is a spatial path with an associated timing law and it is used
-to identify the position of the center of mass of our agent at a given time.
+to identify the position of the center of mass of our agents at a given time.
 First of all, the trajectory used during our experiments are polynomials curves.
 In particular, we use Bézier curves, because of the existence of many
-computationally efficient algorithms designed for this kind curves,
+computationally efficient algorithms designed for this kind of curves,
 such as algorithms to efficiently compute the minimum distance between two Bezier curves
 and the existence of a closed-form solution for the arc lengths of the paths.
-We can start with the following definition of a generic trajectory $ \bm{p}_{d,i}(t_d) $
+
+First of all, let $I = \{N, E, D\}$ denote a right-handed inertial frame with $N$, $E$ and $D$
+unit vectors along north, east and down respectively.
+The vector $p = (x, y, z) \in I$ denotes the position of the center of mass of the vehicle.
+Let $B = \{X_B, Y_B, Z_B\}$ be right-handed body fixed frame centered in the center of mass of the vehicle.
+The orientation of the rigid body is given by rotation matrix $R(\phi, \theta, \psi)$ where
+$\phi$, $\theta$ and $\psi$ are the roll, pitch and yaw Euler angles respectively.
+We can state the following definition of a generic trajectory $ \bm{p}_{d,i}(t_d) $
 for $ N $ vehicles:
 
 \begin{equation}  \label{eq:traj_def}
@@ -17,21 +24,21 @@ is the time variable of the trajectory, while $ t^f_{d,i} \in \mathbb{R}^+ $
 are the individual final mission times of the vehicles obtained during the planning
 phase. Usually all these final times are equal and therefore
 $ t^f_{d,1} = \dots = t^f_{d,N} = T_d$, but we introduced the notation
-for the sake of completeness.
-Obviously, the trajectories need to be collision free and must comply with spatial
-and temporal constraints due to the dimension of the vehicle and its maximum
+for the sake of generality.
+Obviously, the trajectories need to be collision-free and must comply with spatial
+and temporal constraints due to the dimensions of the vehicles and their maximum
 velocities and accelerations.
 The range of the function is $\mathbb{R}^4$ because, in the case of UAVs, we want
-to control $x$, $y$, $z$, $yaw$.
+to control $x$, $y$, $z$, $\psi$.
 The trajectory can account also for $roll$ and $pitch$, and therefore, the function might take
 images in $\mathbb{R}^m$, where $m$ is the number of dimensions considered.
-In the following sections, we will refer only to the position and $yaw$, but a more general
+In the following sections, we will refer only to the position and $\psi$, but a more general
 theory can also be developed.
 
 We now parametrize the trajectory using a dimensionless variable $ \zeta_i \in [0,1]$,
 related to the time $t_d$. In this way we can specify a function $ \theta( \cdot )$,
 which represents the timing law associated with the spatial path $\bm{p}_{d,i}(\zeta_i)$.
-We can specify this timing law using the dynamic relation of the form:
+We can specify this timing law using the dynamic relation:
 
 \begin{equation}  \label{eq:tim_law_def}
   \theta( t_d ) = \frac{d \zeta_i}{dt_d}
@@ -50,36 +57,35 @@ is given by the integral:
   \zeta( t_d ) = \int^{t_d}_0 \theta_i(\tau) d \tau
 \end{equation}
 
-Usually, all this functions are defined as polynomials in order to make quicker and
-easier the evaluation process, since multiplication and addition are the basic
+Usually, all these functions are defined as polynomials in order to make the evaluation process
+quicker and easier, since multiplication and addition are the basic
 operations in a digital processor. However, it is not mandatory to use them and a
 generic shape for the functions can be designed.
 
 For the spatial path we use quintic Bezier curves for the $x$, $y$ and $z$ coordinates,
-while we use a third degree polynomial for the $yaw$ of the drone since we need less
-elaborated shapes.
-Since we are using drones with a decoupled control of $x$, $y$, $z$ and $yaw$, the
+while we use a third degree polynomial for the $\psi$ of the drone since we need less
+elaborate shapes.
+Since we are using drones with a decoupled control of $x$, $y$, $z$ and $\psi$, the
 polynomials are completely independent.
 
 The timing law associated to these curves is a Bezier third order polynomial.
 So, in our case, we have five polynomials which have to be evaluated in real time
-in order to provide the set points. The rate at which we evaluate the trajectory
+in order to provide the set points. The frequency at which we evaluate the trajectory
 is $5 Hz$.
 
-The trajectory which describes the mission of a single drone is shown in the
-following system.
+The trajectory which describes the mission of a single drone is given by:
 
 \[
   \begin{cases}
     x_i(\zeta_i) = \sum_{j=0}^{5}{\bar{x}_{i,j} b_j^5(\zeta_i)}\\
     y_i(\zeta_i) = \sum_{j=0}^{5}{\bar{y}_{i,j} b_j^5(\zeta_i)}\\
     z_i(\zeta_i) = \sum_{j=0}^{5}{\bar{z}_{i,j} b_j^5(\zeta_i)}\\
-    yaw_i(\zeta_i) = \sum_{j=0}^{3}{\bar{yaw}_{i,j} b_j^3(\zeta_i)}\\
+    \psi_i(\zeta_i) = \sum_{j=0}^{3}{\bar{\psi}_{i,j} b_j^3(\zeta_i)}\\
     \zeta_i(t_d) = \sum_{j=0}^{3}{\bar{\zeta}_{i,j} b_j^3(t_d)}\\
   \end{cases}
 \]
 
-$\bar{x}_{i,j}$, $\bar{y}_{i,j}$, $\bar{z}_{i,j}$, $\bar{yaw}_{i,j}$ and $\bar{\zeta}$ $\in \mathbb{R}$
+where $\bar{x}_{i,j}$, $\bar{y}_{i,j}$, $\bar{z}_{i,j}$, $\bar{\psi}_{i,j}$ and $\bar{\zeta}$ $\in \mathbb{R}$
 are the desired control points of the spatial path and $b_n^m$ are the (up to degree $m$)
 Bernstein basis polynomials.
 We do not enter in details about the Bezier curves and Bernstein basis polynomials,

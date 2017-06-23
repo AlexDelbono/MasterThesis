@@ -1,5 +1,4 @@
-In this chapter we will show the simulations conducted to evaluate the “Consensus
-Algotithm”.
+In this chapter we will show the simulations conducted to evaluate the consensus algorithm.
 
 As said in the capter \ref{chap:system_architecture}, the software used is Gazebo.
 We run SITL (Software in the loop) simulations, through the utilities provided by
@@ -28,7 +27,7 @@ the trajectory following problem of a formation of two drones.
 In the second simulation, we send a disturbance to one of the drones and we stop it
 in its position. Third, we introduce a disturbance which makes one of the drones to
 go back following in the reverse order its trajectory.
-We see how the “Consensus algorithm” reacts to these disturbances and forces the other
+We see how the consensus algorithm reacts to these disturbances and forces the other
 drone to preserve the formation.
 We use only two drones because of the computational load of the simulation, but the
 concept can be extended freely to an arbitrary number of drones.
@@ -48,7 +47,7 @@ in \ref{fig:trajectory}.
 Both the drones start in the upper point of their circle and then they move along the
 trajectory in opposite directions. The mission terminates when both the drones reach
 their starting point.
-The evolution of the trajectory during time of the first drone can be seen in the figure
+The evolution of the trajectory during time of the first drone can be seen in the Figure
 \ref{fig:trajectory_during_time}.
 
 \begin{figure}
@@ -58,7 +57,7 @@ The evolution of the trajectory during time of the first drone can be seen in th
 \label{fig:trajectory_during_time}
 \end{figure}
 
-Now we can see how the two drones follow their trajectory. It is shown in the figures
+Now we can see how the two drones follow their trajectory. It is shown in the Figures
 \ref{fig:following_1} and \ref{fig:following_2}.
 
 \begin{figure}
@@ -86,15 +85,15 @@ Indeed, they arrive at the same time in their final position.
 \label{fig:overlapped}
 \end{figure}
 
-If we also consider the figure \ref{fig:overlapped}, we can see that both the drones
+If we also consider the Figure \ref{fig:overlapped}, we can see that both the drones
 are synchronized during the execution of the mission. In the next cases, we will
 add disturbances in order to make more evident the effects of the algorithm.
 
 
 \section{First disturbance}
-In this scenario, we use the same trajectory as before (figure \ref{fig:trajectory}),
+In this scenario, we use the same trajectory as before (Figure \ref{fig:trajectory}),
 but in this case we stop one of the two drones and the other will follow it.
-We can show the disturbance applied at time 11s to the first drone in the figure \ref{fig:disturbance}.
+We can show the disturbance applied at time 11s to the first drone in the Figure \ref{fig:disturbance}.
 
 \begin{figure}
 \centering
@@ -105,7 +104,7 @@ We can show the disturbance applied at time 11s to the first drone in the figure
 
 We can now see how the two drones execute the mission. The second drone tries to
 go on, when the first is interrupted, but then the consensus stops it. The plots are
-shown in the figures \ref{fig:following_1_1} and \ref{fig:following_2_1}.
+shown in the Figures \ref{fig:following_1_1} and \ref{fig:following_2_1}.
 
 \begin{figure}
 \centering
@@ -122,7 +121,7 @@ shown in the figures \ref{fig:following_1_1} and \ref{fig:following_2_1}.
 \end{figure}
 
 At the end we represent a graph in which we plot the positions of the two drones overlapped
-(figure \ref{fig:overlapped_1}).
+(Figure \ref{fig:overlapped_1}).
 
 \begin{figure}
 \centering
@@ -133,11 +132,11 @@ At the end we represent a graph in which we plot the positions of the two drones
 
 
 \section{Second disturbance}
-The trajectory used is always the same (figure \ref{fig:trajectory}), but this time
+The trajectory used is always the same (Figure \ref{fig:trajectory}), but this time
 the disturbance is different. Now we force one drone to go back through the trajectory
 which has travelled so far.
 After the disturbance, the drone can resume the trajectory and complete the mission.
-We can see the effect of the disturbance on the trajectory in the figure \ref{fig:disturbance_2}.
+We can see the effect of the disturbance on the trajectory in the Figure \ref{fig:disturbance_2}.
 
 \begin{figure}
 \centering
@@ -168,7 +167,7 @@ by the two drones in the pictures \ref{fig:following_1_2} and \ref{fig:following
 \end{figure}
 
 At the end we represent a graph in which we plot the positions of the two drones overlapped
-(figure \ref{fig:overlapped_2}).
+(Figure \ref{fig:overlapped_2}).
 
 \begin{figure}
 \centering

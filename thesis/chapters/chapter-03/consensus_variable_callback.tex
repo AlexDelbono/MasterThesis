@@ -7,7 +7,7 @@ This topic is used by all the drones to publish their consensus variable, $\gamm
 and it accepts a custom message which contains only a string with the name of the
 owner of the variable and the value itself. The message has also an header, which contains
 general information such as timestamp or message id.
-The structure of the message can be seen in the figure \ref{fig:custom_message}.
+The structure of the message can be seen in the Figure \ref{fig:custom_message}.
 
 \begin{figure}
 \centering
@@ -26,7 +26,7 @@ remove the neighbors after a timeout.
 
 In order to store this information, we use a support class, thread safe, which
 provides a procedure to check if the variable is expired or not.
-The signatures of the methods of the class are presented in the figure
+The signatures of the methods of the class are presented in the Figure
 \ref{fig:consensuss_variable_class}.
 We use a container to store the values of the neighbors and we always check if the
 value is expired or not before using it.

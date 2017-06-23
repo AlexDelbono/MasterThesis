@@ -6,7 +6,7 @@ in a real environment and in the simulated one.
 The principal software used to manage the distributed architecture is ROS Kinetic
 Kame \cite{ros}.
 ROS is a robotic middleware with a structure which is mainly publisher-subscriber
-and it can manage more machines in a distributed environment.
+which can manage more machines in a distributed environment.
 The central part of the ROS architecture is a node called ROS core, which manages
 the topics of the system and the subscriptions.
 The ROS core offers also other functionalities, such as the Parameter Server or the
@@ -28,17 +28,17 @@ Desktop machine is VMware \cite{vmware}.
 On the virtual machine is installed Ubuntu 16.04 LTS \cite{ubuntu} in order to run software
 needed and available only for Unix systems.
 
-On Windows operative system we launch the Motive Optitrack software \cite{optitrack},
+On Windows operating system we launch the Motive Optitrack software \cite{optitrack},
 which allows to calibrate and control the cameras for position tracking.
 It then provides the streaming of the positions of the markers identified
-by the cameras and sends it to the Ubuntu operative system using a multicast IP address.
+by the cameras and sends it to the Ubuntu operating system using a multicast IP address.
 Here, the information is converted by a ROS node and sent through the ROS topics,
 which are read by the drones. In this way, each drone knows exactly its position.
 This conversion node is an open source node called Mocap which can be found on GitHub \cite{mocap}.
 On Ubuntu side, we launch the ROS core, which manages all the ROS nodes and topics.
 
 \subsection{Raspberry Pi Zero}
-The Raspberry Pi Zero executes a dedicated version of Debian operative system,
+The Raspberry Pi Zero executes a dedicated version of Debian operating system,
 which is Raspbian. The version used is Raspbian Jessie 4.4 \cite{raspbian}.
 
 \subsection{Intel Edison}
@@ -51,16 +51,16 @@ both have to execute some ROS nodes in order to communicate with the other drone
 Both of them run Mavros nodes \cite{mavros}.
 which can be downloaded from GitHub and manage the conversion of the
 information taken from the ROS topics to the serial port and vice versa. Indeed,
-the ROS messages are converted into Mavlink messages and sent through the serial
+the ROS messages are converted into Mavlink messages and sent through the serial port
 to the Pixfalcon autopilot. The same is done for the Mavlink messages from the
 autopilot, which are published on ROS topics.
 
 The second kind of ROS node run by the companions is a custom consensus node, which
 loads the desired trajectory and sends the next set point to the Mavros node.
-This node will be analyzed in detail in the chapter \ref{chap:consensus_node}.
+This node will be analyzed in detail in Chapter \ref{chap:consensus_node}.
 
 \subsection{Pixfalcon}
-The Pixfalcon autopilot is flashed with PX4 Pro Autopilot \cite{px4},
+The Pixfalcon FCU is flashed with PX4 Pro Autopilot \cite{px4},
 an open source firmware downloadable from GitHub.
 The release used is the v1.5.5.
 

@@ -1,14 +1,14 @@
 \section{Consensus law\label{sec:consensus_law}}
 
 Now, we formally state the path following problem. We define as $\bm{p}_i(t) \in \mathbb{R}^4$
-the position of the center of mass of the $i^{th}$ agent and its $yaw$ and since $\bm{p}_{c,i}(t)$
+the position of the center of mass of the $i^{th}$ agent and its $\psi$ and since $\bm{p}_{c,i}(t)$
 describes the commanded pose to be followed by the agent at time $t$, the errors
 are defined as:
 
 \begin{equation}  \label{eq:pos_vel_acc_err}
   \begin{aligned}
   \bm{e}_{p,i}(t) = \ & \bm{p}_{c,i}(t) - \bm{p}_i(t) \in  \mathbb{R}^4\\
-  \bm{e}_{v,i}(t) = \ & \bm{v}_{c,i}(t) - \dot{\bm{p}}_i(t) \in  \mathbb{R}^4
+  \bm{e}_{v,i}(t) = \ & \bm{v}_{c,i}(t) - \dot{\bm{p}}_i(t) \in  \mathbb{R}^4.
   \end{aligned}
 \end{equation}
 
@@ -22,7 +22,7 @@ In fact, since the the trajectories are parametrized by $\gamma_i$, the agents a
 synchronized at time $t$ when:
 
 \begin{equation} \label{eq:diff_gamma}
-  \gamma_i(t) - \gamma_j(t) = 0 \quad for \; all \quad i,j \in {1 , \dots , N}, \quad i \neq j
+  \gamma_i(t) - \gamma_j(t) = 0 \quad for \; all \quad i,j \in \{1 , \dots , N\}, \quad i \neq j.
 \end{equation}
 
 We can also control the rate of progression of the mission using a parameter
@@ -31,7 +31,7 @@ with respect to the real time. All the agents share this variable and they proce
 at the same rate of progression if:
 
 \begin{equation} \label{eq:diff_dot_gamma}
-  \dot{\gamma}_i(t) - \dot{\gamma}_d(t) = 0 \quad for \; all \quad i \in {1 , \dots , N}
+  \dot{\gamma}_i(t) - \dot{\gamma}_d(t) = 0 \quad for \; all \quad i \in \{1 , \dots , N\}.
 \end{equation}
 
 Adjusting $\dot{\gamma}_d$, we can decide the speed of the mission: for instance,
@@ -41,8 +41,8 @@ originally planned in the trajectory generation phase.
 If instead we use $\dot{\gamma}_d > 1$ or $\dot{\gamma}_d < 1$ we carry out the
 mission faster or slower.
 This term can be changed in real time in order to avoid moving objects or
-unplanned obstacles, which make it necessary to change one of the path of the agents.
-For the purpose of “Consensus”, the parameter is only a reference command,
+unplanned obstacles, which make it necessary to change the path of one of the agents.
+For the purpose of consensus, the parameter is only a reference command,
 rather than a control input.
 
 Now, we introduce the coordination control law which regulates the evolution of
@@ -65,19 +65,19 @@ is defined as:
 with $\epsilon$ being a positive design parameter, $\bm{e}_{p,i}$ the position
 error vector defined in \eqref{eq:pos_vel_acc_err} and $\aleph_i$ the set of the
 neighbors which can communicate with the $i^{th}$ vehicle (we will see details later).
-In the equation \eqref{eq:cons_law} we have four terms. The feedforward term,
+In equation \eqref{eq:cons_law} we have four terms. The feedforward term,
 $\ddot{\gamma}_d$, allows the virtual target to follow the acceleration profile of
 $\gamma_d$.
 The second term, $- b (\dot{\gamma}_i(t) - \dot{\gamma}_d(t))$, reduces the error
 between the speed profile imposed by $\dot{\gamma}_d(t)$ and $\dot{\gamma}_i(t)$,
 which corresponds to the control objective given in \eqref{eq:diff_dot_gamma}.
-In particular, if $\dot{\gamma}_d(t)$ is one, then the virtual target converges
+In particular, if $\dot{\gamma}_d(t)$ is equal to one, then the virtual target converges
 to the desired speed profile chosen in the trajectory generation phase.
 The third term, $- a \sum_{j \in \aleph_i} (\gamma_i(t) - \gamma_j(t))$, ensures that
 all the vehicles are coordinated with their neighbors as specified in \eqref{eq:diff_gamma}.
 Finally, the fourth term, $- \overline{\alpha}_i (\bm{e}_{p,i}(t))$, is a correction term
 used to take into account for the path following errors of the agent. Indeed, if the
-vehicle is behind its target, the term is not zero and the target slows down in order
+vehicle is behind its target, the term is non-zero and the target slows down in order
 to wait for the real vehicle.
 
 With this control law, we want our vehicles to be synchronized and to proceed at

@@ -20,12 +20,12 @@ On this machine, we will run a virtual machine which has the following specifica
 \end{itemize}
 
 The flying vehicles involved in the mission are of two kinds, but both adopt the
-same general configuration, even with different hardware. Indeed, they are equipped
+same general configuration, even if with different hardware. Indeed, they are equipped
 with a flight control unit connected to a companion microcomputer by the serial port.
 The microcomputer communicates with the ground station through the Wi-Fi connection.
 
 \subsection{Pixfalcon}
-The flight control unit adopted is the Pixfalcon, (figure \ref{fig:hardware_pixfalcon})
+The flight control unit adopted is the Pixfalcon, (Figure \ref{fig:hardware_pixfalcon})
 which belongs to the family of the Pixhawk \cite{pixhawk}.
 
 \begin{figure}
@@ -75,7 +75,7 @@ Its specifications are the following:
 \end{figure}
 
 The companion computers are of two types.
-The first kind is the Intel Edison \cite{edison} (figure \ref{fig:hardware_edison})
+The first kind is the Intel Edison \cite{edison} (Figure \ref{fig:hardware_edison})
 which is a general purpose computer with the following specifications:
 
 \begin{itemize}
@@ -94,7 +94,7 @@ which is a general purpose computer with the following specifications:
 \end{figure}
 
 The second kind of companion is the RaspberryPi Zero \cite{raspberry}
-(figure \ref{fig:hardware_raspberry}), with the following specifications.
+(Figure \ref{fig:hardware_raspberry}), with the following specifications.
 
 \begin{itemize}
   \item Processor:
@@ -113,7 +113,7 @@ The second kind of companion is the RaspberryPi Zero \cite{raspberry}
 \subsection{Motive Optitrack}
 The motion capture system is Motive Optitrack \cite{optitrack},
 we use eight Optitrack Prime 13 cameras \cite{prime13},
-arranged on a square as show in the figure \ref{fig:camera_square}.
+arranged on a square as show in Figure \ref{fig:camera_square}.
 The cameras define a volume, which is a cube of 5 meters per side,
 and the drones can fly without obstacles inside it.
 
@@ -128,42 +128,34 @@ The cameras are connected to a Netgear Prosafe 28PT GE POE \cite{netgear} switch
 Gigabit Ethernet cables.
 
 In order to be seen by the Optitrack system, every drone must be equipped with
-markers (figure \ref{fig:marker}) with different configurations,
+markers (Figure \ref{fig:marker}) with different configurations,
 which differentiate the drones from each other.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{chapters/chapter-02/figures/marker.jpg}
+\includegraphics[width=0.6\textwidth]{chapters/chapter-02/figures/marker.jpg}
 \caption{Optitrack marker}
 \label{fig:marker}
 \end{figure}
 
-The two models of drones which we will use are presented in the figures \ref{fig:ant1}
-and \ref{fig:hexa}. The first one is the Ant model, a tiny 200g drone, which is
+The two models of drones which we will use are presented in Figures \ref{fig:ant1}
+and \ref{fig:hexa}. The first one is the ANT-1 model, a 200g drone, which is
 equipped with the Raspberry Pi Zero and the Pixfalcon.
 The second one is the Hexa model. It is provided with the Intel Edison board and
-the Pixfalcon board. It is larger and its diameters is about 40cm long.
-As we can see from the figures, the Ant model has four propellers, while the Hexa
+the Pixfalcon board. It is larger and its diameters is approximately 40cm.
+As we can see from the figures, the ANT-1 model has four propellers, while the Hexa
 has six.
 
 \begin{figure}[!htb]
-\minipage{0.5\textwidth}
-  \includegraphics[width=\linewidth]{chapters/chapter-02/figures/ant1_1.jpg}
-\endminipage\hfill
-\minipage{0.5\textwidth}
-  \includegraphics[width=\linewidth]{chapters/chapter-02/figures/ant1_2.jpg}
-\endminipage
-\caption{Ant drone}
+\centering
+\includegraphics[width=0.5\linewidth]{chapters/chapter-02/figures/ant1_1.jpg}
+\caption{ANT-1 drone}
 \label{fig:ant1}
 \end{figure}
 
 \begin{figure}[!htb]
-\minipage{0.5\textwidth}
-  \includegraphics[width=\linewidth]{chapters/chapter-02/figures/hexa_1.jpg}
-\endminipage\hfill
-\minipage{0.5\textwidth}
-  \includegraphics[width=\linewidth]{chapters/chapter-02/figures/hexa_2.jpg}
-\endminipage
+\centering
+\includegraphics[width=0.5\linewidth]{chapters/chapter-02/figures/hexa_1.jpg}
 \caption{Hexa drone}
 \label{fig:hexa}
 \end{figure}

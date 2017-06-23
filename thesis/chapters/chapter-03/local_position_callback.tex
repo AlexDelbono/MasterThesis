@@ -2,7 +2,7 @@
 
 In the position callback function we apply the consensus law. First of all, we
 store the actual position of the drone in an object of a custom class,
-which signature is presented in figure \ref{fig:drone_pose}.
+which signature is presented in Figure \ref{fig:drone_pose}.
 \begin{figure}
 \centering
   \lstinputlisting[language=C++]{chapters/chapter-03/code/drone_pose.hpp}
@@ -20,7 +20,7 @@ we incrementally form the synchronization term.
 The next step is to form the $\overline{\alpha}_i$ term.
 First of all, we need the next set point, which must be obtained evaluating
 the trajectory with the actual value of $\gamma_i$.
-Our trajectory is represented by a class, and its signature is shown in the figure
+Our trajectory is represented by a class, and its signature is shown in the Figure
 \ref{fig:loc_pos_callback_trajectory}.
 \begin{figure}
 \centering
