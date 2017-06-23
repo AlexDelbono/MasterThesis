@@ -4,12 +4,12 @@ previous chapter to a real system.
 We want to highlight that the algorithm works even in the real system
 and the results obtained are compatible with the simulated ones.
 In this scenario, we need to take into account that the network is not ideal and
-the data may suffer delays and inaccuracy due to the different clock synchronization
+the data may suffer delays and inaccuracy due to the complex clock synchronization
 of the machines involved in the experiment.
 
-As in the chapter \ref{chap:simulation_results}, we will run the experiment three times.
-First, the formation has to simply follow the trajectory without disturbances.
-The second time, we run the algorithm and then we stop one of the drones. The other
+As in chapter \ref{chap:simulation_results}, we will run the experiment three times.
+First, the formation has to follow the trajectory without disturbances.
+The second time, we run the algorithm and then we stop one of the drones, while the other one
 will try to go on, but then it stops.
 Third, we apply a disturbance which forces one of the drones to go back following
 in the reverse order its trajectory. The other drone just follows it, because it is
@@ -116,4 +116,7 @@ We can see the synchronization in the figure \ref{fig:exp_overlapped_2}.
 \end{figure}
 
 The experimental results are less accurate than the simulated ones,
-but the overall behaviour is preserved.
+but the overall behaviour is preserved. Indeed, if we compare the results, we
+can see that the formation is maintained in both cases. The plots are very similar
+even if the simulated model of the drones does not reflect the real drones and even if
+the drones used are heterogeneous.
