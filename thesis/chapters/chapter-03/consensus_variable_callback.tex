@@ -5,8 +5,8 @@ is managed by ROS and it executes a callback function when a new message is publ
 on a specific topic.
 This topic is used by all the drones to publish their consensus variable, $\gamma_i$,
 and it accepts a custom message which contains only a string with the name of the
-owner of the variable and the value itself. The message has also an header, which contains
-general information such as timestamp or message id.
+owner of the variable and the value itself. The message has also a header, which contains
+general information such as timestamp or message ID.
 The structure of the message can be seen in the Figure \ref{fig:custom_message}.
 
 \begin{figure}
@@ -18,18 +18,18 @@ The structure of the message can be seen in the Figure \ref{fig:custom_message}.
 
 The callback function receives the information from the topic and updates a local
 view of the variables of the neighbors. This information has a timeout validity,
-because we do not want to consider too old values. Indeed, if we consider too old
-values and a problem in the network causes a loss of packets, our drone might
-think that the other drones have a significantly different values of the consensus variables
-and so, might wait for them. On the contrary, it is better to discard the values and
+because we do not want to consider values which are too old. Indeed, if we considered too old
+values and a problem in the network caused a loss of packets, our drone might
+think that the other drones have significantly different values of the consensus variables
+and might therefore wait for them. This is why, it is better to discard these values and
 remove the neighbors after a timeout.
 
-In order to store this information, we use a support class, thread safe, which
+In order to store this information, we use a thread safe support class, which
 provides a procedure to check if the variable is expired or not.
 The signatures of the methods of the class are presented in the Figure
 \ref{fig:consensuss_variable_class}.
 We use a container to store the values of the neighbors and we always check if the
-value is expired or not before using it.
+value has expired or not before using it.
 
 \begin{figure}
 \centering
@@ -40,12 +40,12 @@ value is expired or not before using it.
 
 These variables are used in the consensus law (\ref{eq:cons_law})
 as $\gamma_j$ of the neighbors and are used to compute the proportional error.
-We can see that the the expiration interval of the values can model the
+We can see that the expiration interval of the values can model the
 fact that the network topology can change.
-Indeed, if a link between two drones vanished because, for instance, they are
+Indeed, if a link between two drones vanished because, for instance, they were
 too far from each other, after a timeout (which it is equal to the expiration time),
-the neighbor will be removed from the container and the drone will not take into
+the neighbor would be removed from the container and the drone would not take into
 account the old neighbor.
-Even a failure of a drone is ignored using the timeout: if a machine has a critical
-problem and does not send its consensus variable, the other drones remove it from
-their neighbors and, therefore, they can continue their mission without problems.
+The timeout can even ignore a failure of a drone: if a machine had a critical
+problem and did not send its consensus variable, the other drones would remove it from
+their neighbors and continue their mission without problems.

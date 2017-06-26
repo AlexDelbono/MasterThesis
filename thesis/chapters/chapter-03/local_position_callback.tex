@@ -2,23 +2,23 @@
 
 In the position callback function we apply the consensus law. First of all, we
 store the actual position of the drone in an object of a custom class,
-which signature is presented in Figure \ref{fig:drone_pose}.
+whose signature is presented in Figure \ref{fig:drone_pose}.
 \begin{figure}
 \centering
   \lstinputlisting[language=C++]{chapters/chapter-03/code/drone_pose.hpp}
 \caption{Class used to manage the position and velocity of the drones}
 \label{fig:drone_pose}
 \end{figure}
-In this class, we also include, besides x, y and z, the yaw of our vehicle. Indeed,
-all the operations defined over the class consider also the orientation.
+In this class, we also include, besides x, y and z, the yaw of our vehicle.
+All the operations defined over the class consider also the orientation.
 
-Now, we compute the synchronization term which corresponds to the sum of the
+Then, we compute the synchronization term which corresponds to the sum of the
 difference between the current $\gamma_i$ and all the $\gamma_j$ of the neighbors.
 In order to do this, we iterate over a container, which stores the values, and
 we incrementally form the synchronization term.
 
 The next step is to form the $\overline{\alpha}_i$ term.
-First of all, we need the next set point, which must be obtained evaluating
+Firstly, we need the next set point, which must be obtained evaluating
 the trajectory with the actual value of $\gamma_i$.
 Our trajectory is represented by a class, and its signature is shown in the Figure
 \ref{fig:loc_pos_callback_trajectory}.
@@ -28,17 +28,17 @@ Our trajectory is represented by a class, and its signature is shown in the Figu
 \caption{Class used to manage a generic trajectory}
 \label{fig:loc_pos_callback_trajectory}
 \end{figure}
-Now, we simply compute the $position\_error$ as $set\_point - position$.
+We then simply compute the $position\_error$ as $set\_point - position$.
 We also need the desired velocity, which can be obtained using the suitable function
 of the trajectory class.
 At this point, we have all the terms needed to compute $\overline{\alpha}_i$
 as defined in \ref{eq:error_term}.
 
-Since we have all the elements, it is time to apply the consensus law and find
+Since we have all the elements, we can apply the consensus law and find
 $\ddot{\gamma}_i$. We simply need to have the coefficients $a$ and $b$
 and the references $\ddot{\gamma}_d$ and $\dot{\gamma}_d$.
 
-One of the last step needed is the update of $\dot{\gamma}_i$ using $\ddot{\gamma}_i$
+One of the last steps that we need to do is updating $\dot{\gamma}_i$ using $\ddot{\gamma}_i$
 and $\gamma_i$ using $\dot{\gamma}_i$. We compute the interval of time, $dt$, between the
 last update and the current update and we do the math as:
 \begin{lstlisting}
@@ -46,7 +46,7 @@ last update and the current update and we do the math as:
     gamma += dgamma * dt;
 \end{lstlisting}
 
-At the end, we need to publish the value of $\gamma_i$ to the right topic only
-if we are operating in consensus mode, otherwise we ignore it. An operation which is
-always needed is the publication of the setpoint message to the autopilot of
-the UAV, in order to allow it to follow the trajectory and reach its final destination.
+Finally, if we are operating in consensus mode, we need to publish the value of $\gamma_i$
+to the right topic, otherwise we simply ignore it. An operation which is
+always necessary is the publication of the setpoint message for the autopilot of
+the UAV, in order to allow the drone to follow the trajectory and reach its final destination.
